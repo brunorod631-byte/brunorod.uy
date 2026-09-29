@@ -11,8 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <style>
-    /* Hoja A4 con 10 tarjetas de 85,6 × 54 mm (tamaño tarjeta de crédito, 2 columnas × 5 filas), estilo Mercury.
-       ?tipo=socio muestra la del Plan Socio. */
+    /* Hoja A4 con 10 tarjetas de 85,6 × 54 mm (tamaño tarjeta de crédito, 2 columnas × 5 filas), estilo Mercury. */
     @page { size: A4; margin: 0; }
     :root {
       --fondo: #171721; --panel: #1e1e2a; --suave: #c3c3cc; --texto: #ededf3; --acento: #5266eb;
@@ -22,8 +21,6 @@
     body { margin: 0; background: #d9dde2; font-family: Inter, Arial, sans-serif; color: var(--texto); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     p { margin: 0; }
     .barra { max-width: 210mm; margin: 16px auto; padding: 0 16px; display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 14px; color: #222; }
-    .barra a { padding: 8px 14px; border-radius: 32px; background: #fff; color: #111; text-decoration: none; font-weight: 500; border: 1px solid #ccd; }
-    .barra a.on { background: #171721; color: #ededf3; border-color: #171721; }
     .hoja {
       width: 210mm; height: 297mm; margin: 0 auto 24px; background: #fff;
       display: grid; grid-template-columns: repeat(2, 85.6mm); grid-auto-rows: 54mm;
@@ -38,8 +35,6 @@
     .kicker { font-size: 5.4pt; font-weight: 480; letter-spacing: 0.01em; color: var(--suave); }
     h1 { margin: 1.4mm 0 0; font-family: var(--titulos); font-stretch: 112%; font-weight: 480; font-size: 11pt; line-height: 1.1; letter-spacing: 0.015em; }
     .rol { margin-top: 1.6mm; font-size: 6pt; line-height: 1.35; color: var(--suave); }
-    .precio { margin-top: 1.8mm; font-family: var(--titulos); font-stretch: 112%; font-weight: 480; font-size: 11pt; letter-spacing: 0.015em; }
-    .precio small { font-family: Inter, Arial, sans-serif; font-size: 6pt; color: var(--suave); }
     .contacto { margin-top: auto; font-size: 6.4pt; line-height: 1.45; }
     .contacto b { font-weight: 480; color: var(--suave); }
     .qr { position: absolute; top: 0; right: 0; bottom: 0; width: 33mm; background: var(--panel); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.4mm; }
@@ -51,8 +46,6 @@
 </head>
 <body>
   <div class="barra">
-    <a href="?tipo=cv" id="l-cv">Tarjeta general</a>
-    <a href="?tipo=socio" id="l-socio">Tarjeta Plan Socio</a>
     <span>Imprimí con Ctrl+P, tamaño A4, márgenes «Ninguno», escala 100 % y «Gráficos de fondo» activado.</span>
   </div>
   <div class="hoja" id="hoja"></div>
@@ -72,26 +65,8 @@
     </div>
   </template>
 
-  <template id="t-socio">
-    <div class="tarjeta">
-      <div class="texto">
-        <p class="kicker">Para tu edificio o tu casa</p>
-        <h1>Plan Socio de Mantenimiento</h1>
-        <p class="rol">Electricidad, sanitaria, calefón, armado de muebles, WiFi y cámaras. Solo pagás los materiales.</p>
-        <p class="precio">$ 650 <small>por mes</small></p>
-        <p class="contacto"><b>Bruno Rodríguez</b> · 098 611 824</p>
-      </div>
-      <div class="qr">
-        <div class="placa"><img src="assets/qr-socio.svg" alt="QR al Plan Socio" /></div>
-        <span class="pildora">Escaneá y mirá qué incluye</span>
-      </div>
-    </div>
-  </template>
-
   <script>
-    const tipo = new URLSearchParams(location.search).get('tipo') === 'socio' ? 'socio' : 'cv';
-    document.getElementById('l-' + tipo).classList.add('on');
-    const t = document.getElementById('t-' + tipo);
+    const t = document.getElementById('t-cv');
     for (let i = 0; i < 10; i++) document.getElementById('hoja').append(t.content.cloneNode(true));
   </script>
 </body>

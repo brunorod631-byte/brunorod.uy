@@ -15,7 +15,6 @@
       Tarjeta tamaño tarjeta de crédito (ISO ID-1: 85,6 × 54 mm) a doble faz, estilo Mercury.
       ?modo=imprenta → 2 páginas (frente y dorso) de 91,6 × 60 mm: 3 mm de sangrado por lado.
       ?modo=a4       → 2 hojas A4 con 10 tarjetas cada una, para imprimir en casa a doble faz.
-      ?tipo=socio    → versión del Plan Socio de Mantenimiento (mismo diseño, otro QR).
     */
     :root {
       --fondo: #171721; --panel: #1e1e2a; --obsidiana: #272735; --borde: #70707d;
@@ -93,8 +92,6 @@
   <div class="barra">
     <a href="?modo=imprenta">PDF para imprenta</a>
     <a href="?modo=a4">PDF para imprimir en casa (A4)</a>
-    <a href="?tipo=socio&modo=imprenta">Plan Socio: imprenta</a>
-    <a href="?tipo=socio&modo=a4">Plan Socio: A4</a>
     <span>Frente y dorso de 85,6 × 54 mm (tamaño tarjeta de crédito).</span>
   </div>
   <div class="vista" id="vista"></div>
@@ -128,41 +125,9 @@
     </div>
   </template>
 
-  <template id="t-frente-socio">
-    <div class="cara frente">
-      <div class="marca"><div class="logo">BR</div><span class="web">brunorod.uy</span></div>
-      <p class="titular">Plan Socio de Mantenimiento</p>
-      <div class="pie">
-        <div class="firma"><b>Para tu edificio · tu casa · tu comercio</b><span>Solo pagás los materiales</span></div>
-        <span class="pildora">$ 650 por mes</span>
-      </div>
-    </div>
-  </template>
-
-  <template id="t-dorso-socio">
-    <div class="cara dorso">
-      <div class="datos">
-        <p class="nombre">Plan Socio</p>
-        <p class="rol">Mano de obra incluida · $ 650 por mes</p>
-        <div class="lineas">
-          <p class="linea"><b>Hogar</b>Electricidad, sanitaria, calefón y pintura</p>
-          <p class="linea"><b>Armado y colocación</b>Muebles, cortinas roller, estantes</p>
-          <p class="linea"><b>Tecnología</b>WiFi, internet y cámaras de seguridad</p>
-          <p class="linea"><b>Bruno Rodríguez · WhatsApp</b>098 611 824</p>
-        </div>
-      </div>
-      <div class="panel-qr">
-        <div class="qr"><img src="assets/qr-socio.svg" alt="QR al Plan Socio" /></div>
-        <span class="pildora">Escaneá y mirá qué incluye</span>
-      </div>
-    </div>
-  </template>
-
   <script>
     const params = new URLSearchParams(location.search);
     const modo = params.get('modo') === 'a4' ? 'a4' : 'imprenta';
-    // ?tipo=socio usa la versión del Plan Socio de Mantenimiento.
-    const sufijo = params.get('tipo') === 'socio' ? '-socio' : '';
     document.body.classList.add(modo);
     const cara = (id) => document.getElementById(id).content.cloneNode(true);
     // Tamaño de página según el modo (Chrome toma el @page para el PDF).
@@ -172,13 +137,13 @@
     if (modo === 'imprenta') document.documentElement.style.setProperty('--s', '3mm');
 
     // Vista previa en pantalla: frente y dorso.
-    for (const id of ['t-frente', 't-dorso']) document.getElementById('vista').append(cara(id + sufijo));
+    for (const id of ['t-frente', 't-dorso']) document.getElementById('vista').append(cara(id));
 
     // Hojas para imprimir.
     for (const id of ['t-frente', 't-dorso']) {
       const hoja = document.createElement('div');
       hoja.className = 'hoja';
-      for (let i = 0; i < (modo === 'a4' ? 10 : 1); i++) hoja.append(cara(id + sufijo));
+      for (let i = 0; i < (modo === 'a4' ? 10 : 1); i++) hoja.append(cara(id));
       document.body.append(hoja);
     }
   </script>
