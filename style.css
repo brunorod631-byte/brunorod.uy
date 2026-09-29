@@ -284,31 +284,6 @@ body.con-intro { overflow: hidden; }
 }
 @media (min-width: 820px) { .carrusel-item { width: 168px; } .carrusel-item img { width: 148px; height: 148px; } }
 
-/* Plan Socio de Mantenimiento */
-.plan {
-  display: grid; gap: 24px; padding: 24px 20px;
-  border-radius: var(--radio);
-  background: var(--panel);
-}
-.plan-cab .btn { margin-top: 18px; width: 100%; }
-.plan-precio { margin-top: 18px; padding: 16px 20px; border-radius: var(--radio); background: var(--fondo); }
-.plan-precio span { display: block; font-size: 13px; color: var(--suave); }
-.plan-precio strong { font-family: var(--titulos); font-stretch: 112%; font-size: 32px; font-weight: 480; letter-spacing: 0.015em; }
-.plan-pasos { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
-.plan-pasos li { display: flex; gap: 14px; align-items: flex-start; }
-.paso-num { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 50%; background: var(--fondo-2); color: var(--texto); font-weight: 480; font-size: 15px; }
-.plan-pasos strong { display: block; font-size: 16px; font-weight: 480; }
-.plan-pasos p { color: var(--suave); font-size: 14px; }
-.plan-sub { margin-top: 32px; }
-.incluye { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 12px; }
-.item { padding: 32px; border-radius: var(--radio); background: var(--panel); min-width: 0; }
-.item-icono { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%; background: var(--fondo-2); color: var(--texto); margin-bottom: 16px; }
-.item-icono svg { width: 22px; height: 22px; }
-.item h4 { margin: 0 0 8px; font-size: 21px; line-height: 1.35; }
-.item p { color: var(--suave); font-size: 14px; }
-.condiciones { margin: 18px 0 0; padding: 16px 16px 16px 34px; border-radius: var(--radio); background: var(--fondo-2); color: var(--suave); font-size: 14px; }
-.condiciones li + li { margin-top: 4px; }
-
 /* Proyectos */
 .proyectos { display: grid; gap: 12px; }
 .proyecto { min-width: 0; background: var(--panel); border-radius: var(--radio); padding: 32px; }
@@ -418,8 +393,6 @@ body.con-intro { overflow: hidden; }
   .proyecto.con-imagenes { grid-column: 1 / -1; }
   .galeria img { width: 200px; }
   .dos-col { grid-template-columns: 1.4fr 1fr; }
-  .plan { grid-template-columns: 1.1fr 1fr; padding: 40px; align-items: center; }
-  .plan-cab .btn { width: auto; }
 }
 
 /* PC: texto a la izquierda, sillón a la derecha */
