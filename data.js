@@ -16,7 +16,7 @@ window.CV = {
     email: 'bruno@brunorod.uy',
     linkedin: 'https://linkedin.com/in/brunorodriguez-dev',
     github: 'https://github.com/brunorod631-byte',
-    cv: 'assets/cv-bruno-rodriguez.pdf?v=4',
+    cv: 'assets/cv-bruno-rodriguez.pdf?v=5',
   },
 
   // Demos de RA por rubro (restaurantes primero).
