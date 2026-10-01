@@ -19,7 +19,6 @@
   $('resumen').textContent = cv.resumen;
   $('lugar').textContent = cv.lugar;
   $('btn-wa').href = cv.contacto.whatsapp;
-  $('btn-cv').href = cv.contacto.cv;
 
   // Compartir: menú nativo del celular; si no existe (computadora), abre WhatsApp con el link.
   $('btn-compartir').addEventListener('click', async () => {
@@ -240,12 +239,10 @@
     ['Email', c.email, 'mailto:' + c.email],
     ['LinkedIn', 'brunorodriguez-dev', c.linkedin],
     ['GitHub', 'brunorod631-byte', c.github],
-    ['CV en PDF', 'Descargar', c.cv],
   ];
   for (const [t, v, href] of tarjetas) {
     const a = el('a', { class: 'contacto-card', href }, el('span', { text: t }), el('strong', { text: v }));
     if (href.startsWith('http')) { a.target = '_blank'; a.rel = 'noopener'; }
-    if (t === 'CV en PDF') a.setAttribute('download', '');
     $('contacto-grid').append(a);
   }
 
