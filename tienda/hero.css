@@ -62,11 +62,20 @@
   fill: none; stroke: #8f9bff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
   transition: transform 0.25s ease;
 }
-.ht-cat:hover, .ht-cat:focus-visible {
+/* Hover solo con mouse: en pantallas táctiles quedaba "pegado" después de tocar. */
+.ht-cat:focus-visible {
   transform: translateY(-3px); background: rgba(34, 34, 50, 0.9); border-color: rgba(143, 155, 255, 0.55);
   box-shadow: 0 12px 28px -14px rgba(82, 102, 235, 0.7);
 }
-.ht-cat:hover .ht-cat-icono, .ht-cat:focus-visible .ht-cat-icono { transform: translateY(-2px); }
+.ht-cat:focus-visible .ht-cat-icono { transform: translateY(-2px); }
+@media (hover: hover) {
+  .ht-cat:hover {
+    transform: translateY(-3px); background: rgba(34, 34, 50, 0.9); border-color: rgba(143, 155, 255, 0.55);
+    box-shadow: 0 12px 28px -14px rgba(82, 102, 235, 0.7);
+  }
+  .ht-cat:hover .ht-cat-icono { transform: translateY(-2px); }
+}
+.ht-cat:active { background: rgba(34, 34, 50, 0.9); }
 
 /* Marcas */
 .ht-marcas {
