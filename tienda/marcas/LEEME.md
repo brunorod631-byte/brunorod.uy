@@ -11,7 +11,6 @@ solo a Dahua se le recortó el margen transparente y se achicó).
 | Dahua | `dahua.png` | www.dahuasecurity.com/logo.png (encabezado) |
 | Intelbras | `intelbras.svg` | SVG del encabezado de intelbras.com/pt-br |
 | EZVIZ | `ezviz.svg` | SVG del encabezado de ezviz.com |
-| Xiongmai | — | **Falta**: xiongmaitech.com no respondía. Mientras tanto se muestra el nombre en texto. |
 
 - En el hero se muestran a color sobre una pastilla clara (`hero.css`, `.ht-marca`), todas a la misma altura.
 - Para agregar o cambiar uno: poné el archivo acá y completá `logo` en `tienda/config.js` → `hero.marcas`.

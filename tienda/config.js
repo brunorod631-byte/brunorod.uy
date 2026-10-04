@@ -31,8 +31,6 @@ window.TIENDA = {
       { nombre: 'Dahua', logo: 'marcas/dahua.png' },
       { nombre: 'Intelbras', logo: 'marcas/intelbras.svg' },
       { nombre: 'EZVIZ', logo: 'marcas/ezviz.svg' },
-      // TODO: el sitio oficial (xiongmaitech.com) no respondía el 2026-10-04; cargar marcas/xiongmai.svg.
-      { nombre: 'Xiongmai', logo: null },
     ],
   },
 };
