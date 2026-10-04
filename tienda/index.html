@@ -27,10 +27,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css?v=59" />
   <link rel="stylesheet" href="tienda.css?v=2" />
-  <link rel="stylesheet" href="hero.css?v=8" />
+  <link rel="stylesheet" href="hero.css?v=10" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
   <script src="config.js?v=6" defer></script>
-  <script src="hero.js?v=3" defer></script>
+  <script src="hero.js?v=4" defer></script>
   <script src="tienda.js?v=3" defer></script>
 </head>
 <body>
@@ -130,6 +130,21 @@
       <div class="ht-marcas">
         <p class="ht-marcas-titulo" id="ht-marcas-titulo">Trabajamos con grandes marcas</p>
         <ul class="ht-marcas-lista" id="ht-marcas" aria-labelledby="ht-marcas-titulo"></ul>
+      </div>
+    </section>
+
+    <!-- Franja destacada: foto de red real (Unsplash) + acceso a Redes y conectividad -->
+    <section class="ht-destacado" aria-labelledby="destacado-titulo">
+      <picture class="ht-destacado-foto">
+        <source type="image/avif" srcset="img/redes-rack-1632.avif 1632w" sizes="(max-width: 1231px) 100vw, 1168px" />
+        <img src="img/redes-rack-1600.webp" srcset="img/redes-rack-800.webp 800w, img/redes-rack-1600.webp 1600w"
+          sizes="(max-width: 1231px) 100vw, 1168px" width="1600" height="900" loading="lazy" decoding="async"
+          alt="Switches de red en un rack, con cables de red conectados y luces de estado encendidas" />
+      </picture>
+      <div class="ht-destacado-texto">
+        <p class="ht-eyebrow">Redes y conectividad</p>
+        <h2 id="destacado-titulo">Routers, switches, extensores WiFi, cables y conectores</h2>
+        <a class="btn btn-primario" href="./?categoria=redes-y-conectividad" data-filtrar="Redes y conectividad">Ver redes y conectividad</a>
       </div>
     </section>
 

@@ -44,6 +44,16 @@
     $('ht-categorias').append(li);
   }
 
+  // Otros accesos a categorías (franja destacada): mismo comportamiento que las tarjetas.
+  for (const a of document.querySelectorAll('[data-filtrar]')) {
+    a.addEventListener('click', (e) => {
+      if (!window.tiendaFiltrar || e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault();
+      window.tiendaFiltrar(a.dataset.filtrar);
+      irAlCatalogo();
+    });
+  }
+
   // CTA principal: baja al catálogo sin dejar #catalogo en la URL.
   $('ht-cta').addEventListener('click', (e) => {
     e.preventDefault();
