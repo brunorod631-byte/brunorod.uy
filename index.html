@@ -25,10 +25,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css?v=52" />
+  <link rel="stylesheet" href="style.css?v=56" />
   <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
   <script src="data.js?v=58" defer></script>
-  <script src="app.js?v=53" defer></script>
+  <script src="app.js?v=55" defer></script>
 </head>
 <body>
   <div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-titulo" hidden>
@@ -41,8 +41,11 @@
       <div class="intro-acciones">
         <div class="asoma" id="asoma-intro">
           <div class="asoma-ventana" aria-hidden="true"><div class="asoma-robot" data-anim="img/robot/robot.json"></div></div>
-          <div class="asoma-ventana asoma-ventana-izq" aria-hidden="true"><div class="asoma-robot asoma-robot-2" data-anim="img/robot2/bot.json"></div></div>
           <button class="btn btn-primario intro-btn" type="button" id="intro-iniciar">Echá un vistazo a mis trabajos</button>
+        </div>
+        <div class="asoma asoma-tienda" id="asoma-tienda">
+          <div class="asoma-ventana asoma-ventana-izq" aria-hidden="true"><div class="asoma-robot asoma-robot-2" data-anim="img/robot2/bot.json"></div></div>
+          <a class="btn intro-btn intro-btn-tienda" href="tienda/" id="intro-tienda">Visitá la tienda</a>
         </div>
       </div>
     </div>

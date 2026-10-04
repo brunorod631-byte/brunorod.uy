@@ -112,7 +112,12 @@
     $('intro-iniciar').focus();
   }
   $('intro-iniciar').addEventListener('click', cerrarIntro);
-  if (!intro.hidden) robotQueAsoma($('asoma-intro'), () => intro.hidden);
+  // Ir a la tienda cuenta como bienvenida vista (al volver atrás no reaparece).
+  $('intro-tienda').addEventListener('click', () => { try { sessionStorage.setItem('introVista', '1'); } catch {} });
+  if (!intro.hidden) {
+    robotQueAsoma($('asoma-intro'), () => intro.hidden);
+    robotQueAsoma($('asoma-tienda'), () => intro.hidden);
+  }
   if (!intro.hidden) {
     // El 3D se descarga solo si se ve la bienvenida; si falla (sin WebGL) queda el texto solo
     const sillon = $('sillon-intro');
@@ -311,12 +316,21 @@
 })();
 
 // Robots que asoman por detrás de un botón y saludan ("Robot Wave" de Irby Pace y
-// "AI bot" de Trình, LottieFiles). La librería se descarga solo si hace falta.
+// "AI bot" de Trình, LottieFiles). La librería se descarga una sola vez y solo si hace falta.
+// (Declaraciones de función, no const: se llaman desde el bloque de arriba, que corre antes.)
+function cargarLottie() {
+  cargarLottie.listo ??= new Promise((ok, mal) => {
+    const s = document.createElement('script');
+    s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_light.min.js';
+    s.onload = ok;
+    s.onerror = mal;
+    document.head.append(s);
+  });
+  return cargarLottie.listo;
+}
 function robotQueAsoma(caja, terminado) {
   if (!caja) return;
-  const s = document.createElement('script');
-  s.src = 'https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie_light.min.js';
-  s.onload = async () => {
+  cargarLottie().then(async () => {
     const cargar = async (el) => {
       const url = el.dataset.anim;
       const datos = await (await fetch(url)).json();
@@ -347,6 +361,5 @@ function robotQueAsoma(caja, terminado) {
     const ciclo = setInterval(() => {
       if (terminado()) { clearInterval(ciclo); anims.forEach((a) => a.destroy()); } else asomar();
     }, 9000);
-  };
-  document.head.append(s);
+  }).catch(() => {});
 }

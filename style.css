@@ -258,9 +258,20 @@ body.con-intro { overflow: hidden; }
 .intro-cuerpo h1 { font-size: clamp(32px, 8.4vw, 65px); font-weight: 480; line-height: 1.1; letter-spacing: 0.01em; color: var(--acento-texto); }
 .intro-cuerpo > p:not(.kicker) { color: var(--texto); font-size: 17px; font-weight: 480; line-height: 1.35; margin-top: 16px; }
 .intro-cuerpo strong { color: var(--texto); }
-.intro-acciones { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 96px; }
+.intro-acciones { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 96px; }
+/* Botón de la tienda debajo: deja lugar para que su robot asome sin tapar el botón de arriba */
+.asoma-tienda { margin-top: 72px; }
+.intro-btn-tienda { background: rgba(23, 23, 33, 0.9); }
 .intro-btn { min-height: 52px; padding: 0 24px; }
-@media (max-width: 480px) { .intro-btn, .asoma { width: 100%; } }
+@media (max-width: 480px) {
+  .intro-btn, .asoma { width: 100%; }
+  /* Con dos botones: sillón y espacios más compactos para que el de la tienda entre en pantalla */
+  .intro-cuerpo { padding-top: 20px; }
+  .intro .sillon3d { width: min(100%, 300px); margin-bottom: 12px; }
+  .intro-acciones { margin-top: 80px; }
+  .asoma-tienda { margin-top: 58px; }
+}
+@media (max-width: 400px) { .intro .sillon3d { width: min(100%, 250px); } }
 
 /* Robot que asoma por detrás del botón y saluda */
 .asoma { position: relative; display: flex; isolation: isolate; }
@@ -274,7 +285,7 @@ body.con-intro { overflow: hidden; }
   transform: translateY(75%); transition: transform 0.45s cubic-bezier(0.5, 0, 0.75, 0);
 }
 .asoma.saluda .asoma-robot { transform: translateY(-4%); transition: transform 0.6s cubic-bezier(0.25, 1.5, 0.5, 1); }
-/* Compañero: robot blanco del lado izquierdo, llega medio segundo después */
+/* Robot blanco del botón de la tienda, del lado izquierdo, llega medio segundo después */
 .asoma-ventana-izq { right: auto; left: 14px; width: 96px; }
 .asoma-robot-2 { top: 14px; left: -31px; width: 164px; height: 92px; transform: translateY(100%); }
 .asoma.saluda .asoma-robot-2 { transform: translateY(0); transition-delay: 0.5s; }
@@ -405,7 +416,7 @@ body.con-intro { overflow: hidden; }
   .intro-cuerpo > :not(.sillon3d) { grid-column: 1; }
   .intro .sillon3d { grid-column: 2; grid-row: 1 / span 4; align-self: center; width: 100%; margin: 0; }
   .intro-cuerpo h1 { font-size: clamp(40px, 4.2vw, 58px); }
-  .intro-acciones { justify-content: flex-start; }
+  .intro-acciones { align-items: flex-start; }
   .intro-acciones .asoma .intro-btn { min-width: 320px; }
 }
 
