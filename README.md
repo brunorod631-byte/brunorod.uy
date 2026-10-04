@@ -21,3 +21,10 @@ Modelos 3D de terceros: ver créditos al pie de la página.
 - La intro se muestra al entrar por la dirección general (una vez por sesión). Con `#sección` en la URL (QR de rubros o plan) va directo.
 - Las imágenes del carrusel están en `img/posters/<modelo>.webp`. Para un modelo nuevo: servir la carpeta, abrir `_posters.html` (solo local, no se publica) y llamar `render(i)`; después recortar a 360 × 360 con fondo transparente.
 - `tarjeta-visita.html?modo=imprenta|a4`: tarjeta de 90 × 50 mm a doble faz (frente con logo, dorso con datos y QR). PDF en `imprimir/tarjeta-visita-imprenta.pdf` (96 × 56 mm con 3 mm de sangrado, pág. 1 frente, pág. 2 dorso) y `imprimir/tarjeta-visita-a4.pdf` (10 por hoja, para doble faz por el lado largo).
+
+## Tienda (`/tienda/`)
+
+- `tienda/productos.js`: catálogo (el formato está explicado arriba del archivo). Fotos en `tienda/img/`.
+- Carrito en el navegador del cliente (localStorage). El pedido se manda por WhatsApp con el detalle, y el pago es por transferencia (los datos de la cuenta se pasan por WhatsApp, no están en la web).
+- `brunorod.uy/tienda/#<id>` abre directo la ficha de un producto (sirve para compartir).
+- Al cambiar productos, subir el `?v=` de `productos.js` en `tienda/index.html`.

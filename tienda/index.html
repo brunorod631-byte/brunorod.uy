@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Tienda · Bruno Rodríguez</title>
+  <meta name="description" content="Cámaras de seguridad y componentes tecnológicos. Pedí por WhatsApp y pagá por transferencia." />
+  <meta name="theme-color" content="#171721" />
+  <meta property="og:title" content="Tienda · brunorod.uy" />
+  <meta property="og:description" content="Cámaras de seguridad y componentes tecnológicos. Pedí por WhatsApp." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://brunorod.uy/tienda/" />
+  <meta property="og:image" content="https://brunorod.uy/img/og.jpg" />
+  <link rel="canonical" href="https://brunorod.uy/tienda/" />
+  <link rel="icon" href="../assets/icon.svg?v=2" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css?v=52" />
+  <link rel="stylesheet" href="tienda.css?v=1" />
+  <script src="productos.js?v=1" defer></script>
+  <script src="tienda.js?v=1" defer></script>
+</head>
+<body>
+  <nav class="nav con-fondo" aria-label="Secciones">
+    <a href="../" class="nav-brand" aria-label="Inicio">BR</a>
+    <div class="nav-links">
+      <a href="../">Inicio</a>
+      <a href="./" aria-current="page">Tienda</a>
+    </div>
+    <button type="button" class="btn btn-primario nav-cta carrito-btn" id="abrir-carrito" aria-label="Abrir carrito">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7 18a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm10 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM5.2 4H2V2h4.8l.9 2H21l-3.6 8.1a2 2 0 0 1-1.8 1.2H8.1l-1 1.7h12v2H5.6c-1.1 0-1.8-1.2-1.2-2.1L5.9 12 3.7 6H3.6L5.2 4Zm3.4 7.3h7l2.6-5.3H6.6l2 5.3Z"/></svg>
+      <span>Carrito</span>
+      <span class="carrito-cuenta" id="carrito-cuenta" hidden>0</span>
+    </button>
+  </nav>
+
+  <main class="wrap tienda">
+    <header class="tienda-cab">
+      <p class="kicker">Tienda</p>
+      <h1>Cámaras y componentes</h1>
+      <p class="bajada">Elegí los productos, armá tu pedido y mandámelo por WhatsApp. Te confirmo stock y total, y pagás por transferencia.</p>
+    </header>
+
+    <div class="rubros" role="tablist" id="categorias" aria-label="Categorías"></div>
+    <div class="productos" id="productos"></div>
+    <p class="tienda-vacia" id="tienda-vacia" hidden>Estoy cargando los productos. Mientras tanto, <a id="vacia-wa" target="_blank" rel="noopener">escribime por WhatsApp</a> y te paso lo que tengo disponible.</p>
+  </main>
+
+  <!-- Ficha de producto -->
+  <dialog class="hoja ficha" id="ficha" aria-labelledby="ficha-nombre">
+    <button type="button" class="hoja-cerrar" data-cerrar aria-label="Cerrar">×</button>
+    <div class="ficha-grid">
+      <div class="ficha-fotos">
+        <div class="ficha-foto" id="ficha-foto"></div>
+        <div class="ficha-miniaturas" id="ficha-miniaturas"></div>
+      </div>
+      <div class="ficha-info">
+        <p class="kicker" id="ficha-categoria"></p>
+        <h2 id="ficha-nombre"></h2>
+        <p class="ficha-precio" id="ficha-precio"></p>
+        <div class="ficha-descripcion" id="ficha-descripcion"></div>
+        <ul class="ficha-caracteristicas" id="ficha-caracteristicas"></ul>
+        <div class="ficha-acciones">
+          <div class="cantidad" aria-label="Cantidad">
+            <button type="button" id="ficha-menos" aria-label="Restar uno">−</button>
+            <output id="ficha-cantidad">1</output>
+            <button type="button" id="ficha-mas" aria-label="Sumar uno">+</button>
+          </div>
+          <button type="button" class="btn btn-primario" id="ficha-agregar">Agregar al carrito</button>
+        </div>
+      </div>
+    </div>
+  </dialog>
+
+  <!-- Carrito y pedido -->
+  <dialog class="hoja carrito" id="carrito" aria-labelledby="carrito-titulo">
+    <button type="button" class="hoja-cerrar" data-cerrar aria-label="Cerrar">×</button>
+    <h2 id="carrito-titulo">Tu pedido</h2>
+    <ul class="carrito-lista" id="carrito-lista"></ul>
+    <p class="carrito-vacio" id="carrito-vacio">Todavía no agregaste productos.</p>
+    <div id="carrito-pie">
+      <div class="carrito-total" id="carrito-total"></div>
+      <form class="form-contacto pedido" id="form-pedido" novalidate>
+        <h3>Tus datos</h3>
+        <label>Nombre
+          <input name="nombre" type="text" autocomplete="name" maxlength="80" required />
+        </label>
+        <label>Entrega
+          <select name="entrega" id="pedido-entrega"></select>
+        </label>
+        <div class="pedido-envio" id="pedido-envio" hidden>
+          <label>Dirección
+            <input name="direccion" type="text" autocomplete="street-address" maxlength="160" />
+          </label>
+          <label>Ciudad / departamento
+            <input name="localidad" type="text" autocomplete="address-level2" maxlength="80" />
+          </label>
+        </div>
+        <label>Comentario (opcional)
+          <textarea name="comentario" rows="3" maxlength="600"></textarea>
+        </label>
+        <p class="form-ayuda pedido-pago" id="pedido-pago"></p>
+        <button class="btn btn-primario" type="submit">Enviar pedido por WhatsApp</button>
+        <p class="form-estado error" id="pedido-estado" role="status"></p>
+      </form>
+    </div>
+  </dialog>
+
+  <footer class="wrap pie">
+    <p>© <span id="anio"></span> Bruno Rodríguez · <a href="../">brunorod.uy</a></p>
+  </footer>
+</body>
+</html>
