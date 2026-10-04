@@ -240,6 +240,7 @@ window.CV = {
   ],
 
   creditos: [
+    '"Pomo Inteligente para Entrada del Hogar" — Eonesia_world (Sketchfab), CC BY 4.0 · usado en la tienda',
     'Pizza "BigBoss" — ponomarovmax (Sketchfab), CC BY 4.0',
     '"Strawberry Chocolate Cake" — Poly Haven, CC0',
     '"Big Mac" — Aaron Theesfeld (Sketchfab), CC BY 4.0 · optimizado y escalado',

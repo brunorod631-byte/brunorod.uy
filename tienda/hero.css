@@ -44,7 +44,13 @@
 
 /* Visual */
 .ht-visual { justify-self: end; width: min(100%, 400px); pointer-events: none; }
+.ht-visual { position: relative; }
 .ht-visual svg { display: block; width: 100%; height: auto; }
+/* Pomo 3D dentro del anillo interior (r=168 de 480 → 70 % del ancho) */
+.ht-modelo {
+  position: absolute; inset: 14%; width: auto; height: auto;
+  background: transparent; --poster-color: transparent; --progress-bar-color: transparent;
+}
 
 /* Accesos a categorías */
 .ht-categorias { margin-top: 32px; }
@@ -145,7 +151,8 @@
   .tienda { padding-top: 88px; }
   .ht-fondo { top: -88px; }
   .ht-principal { grid-template-columns: 1fr; }
-  .ht-visual { position: absolute; z-index: 0; right: -84px; top: -36px; width: 250px; opacity: 0.24; }
+  /* El pomo 3D va debajo de los botones, chico y nítido (de fondo detrás del título no se veía). */
+  .ht-visual { justify-self: center; width: min(240px, 64vw); margin: 4px 0 -12px; }
   .ht-eyebrow { font-size: 11px; letter-spacing: 0.14em; }
   .ht-acciones .btn { flex: 1 1 100%; }
 

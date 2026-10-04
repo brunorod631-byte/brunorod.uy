@@ -19,9 +19,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css?v=52" />
   <link rel="stylesheet" href="tienda.css?v=2" />
-  <link rel="stylesheet" href="hero.css?v=4" />
+  <link rel="stylesheet" href="hero.css?v=6" />
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@4.3.1/dist/model-viewer.min.js"></script>
   <script src="config.js?v=5" defer></script>
-  <script src="hero.js?v=2" defer></script>
+  <script src="hero.js?v=3" defer></script>
   <script src="tienda.js?v=3" defer></script>
 </head>
 <body>
@@ -70,7 +71,7 @@
           </div>
         </div>
 
-        <!-- Visual abstracto propio: lente + anillos + nodos de red. No representa ningún producto ni marca. -->
+        <!-- Visual: anillos y nodos de red (SVG propio) + pomo inteligente 3D (Eonesia_world, CC BY 4.0; ver créditos). -->
         <div class="ht-visual" aria-hidden="true">
           <svg viewBox="0 0 480 480" width="480" height="480" focusable="false">
             <defs>
@@ -79,25 +80,6 @@
                 <stop offset=".55" stop-color="#5266eb" stop-opacity=".08"/>
                 <stop offset="1" stop-color="#5266eb" stop-opacity="0"/>
               </radialGradient>
-              <radialGradient id="hv-cuerpo" cx="42%" cy="38%" r="70%">
-                <stop offset="0" stop-color="#2b2b42"/>
-                <stop offset="1" stop-color="#121219"/>
-              </radialGradient>
-              <radialGradient id="hv-vidrio" cx="40%" cy="36%" r="72%">
-                <stop offset="0" stop-color="#3b4cc4"/>
-                <stop offset=".45" stop-color="#1a1f52"/>
-                <stop offset="1" stop-color="#07070d"/>
-              </radialGradient>
-              <radialGradient id="hv-iris" cx="50%" cy="50%" r="50%">
-                <stop offset="0" stop-color="#8f9bff"/>
-                <stop offset=".5" stop-color="#5266eb"/>
-                <stop offset="1" stop-color="#1a1f52"/>
-              </radialGradient>
-              <linearGradient id="hv-borde" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#8f9bff" stop-opacity=".7"/>
-                <stop offset=".5" stop-color="#ededf3" stop-opacity=".08"/>
-                <stop offset="1" stop-color="#5266eb" stop-opacity=".45"/>
-              </linearGradient>
             </defs>
 
             <circle class="hv-halo" cx="240" cy="240" r="236" fill="url(#hv-halo)"/>
@@ -124,15 +106,11 @@
             <circle cx="240" cy="240" r="168" fill="none" stroke="#ededf3" stroke-opacity=".08" stroke-width="1"/>
             <circle class="hv-giro hv-giro-lento" cx="240" cy="240" r="168" fill="none" stroke="#5266eb" stroke-opacity=".8" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="110 946"/>
 
-            <circle cx="240" cy="240" r="132" fill="url(#hv-cuerpo)" stroke="url(#hv-borde)" stroke-width="1.5"/>
-            <circle cx="240" cy="240" r="104" fill="#0b0b12" stroke="#ededf3" stroke-opacity=".06"/>
-            <circle cx="240" cy="240" r="90" fill="url(#hv-vidrio)"/>
-            <circle cx="240" cy="240" r="62" fill="none" stroke="#8f9bff" stroke-opacity=".22"/>
-            <circle class="hv-iris" cx="240" cy="240" r="30" fill="url(#hv-iris)"/>
-            <circle cx="240" cy="240" r="12" fill="#07070d"/>
-            <ellipse cx="206" cy="200" rx="30" ry="15" fill="#ededf3" fill-opacity=".14" transform="rotate(-35 206 200)"/>
-            <circle cx="228" cy="226" r="4" fill="#ededf3" fill-opacity=".7"/>
           </svg>
+          <model-viewer class="ht-modelo" src="../models/pomo-inteligente.glb" alt="" loading="eager" reveal="auto"
+            auto-rotate auto-rotate-delay="0" rotation-per-second="14deg" interaction-prompt="none"
+            disable-zoom disable-pan disable-tap environment-image="neutral" exposure="1.05" shadow-intensity="0"
+            camera-orbit="-30deg 75deg auto" tone-mapping="neutral"></model-viewer>
         </div>
       </div>
 
@@ -216,7 +194,7 @@
   </dialog>
 
   <footer class="wrap pie">
-    <p>© <span id="anio"></span> Bruno Rodríguez · <a href="../">brunorod.uy</a></p>
+    <p>© <span id="anio"></span> Bruno Rodríguez · <a href="../">brunorod.uy</a> · <a href="../creditos.html">Créditos</a></p>
   </footer>
 </body>
 </html>

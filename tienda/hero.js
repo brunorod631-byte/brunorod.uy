@@ -83,6 +83,10 @@
     lista.append(li);
   });
 
+  // Modelo 3D: sin giro continuo si el sistema pide reducir animaciones.
+  const modelo = document.querySelector('.ht-modelo');
+  if (modelo && matchMedia('(prefers-reduced-motion: reduce)').matches) modelo.removeAttribute('auto-rotate');
+
   // Aparición escalonada de las marcas, una sola vez, al entrar en pantalla.
   if ('IntersectionObserver' in window) {
     lista.classList.add('por-aparecer');
