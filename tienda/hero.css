@@ -1,0 +1,167 @@
+/* Hero de la tienda. Usa los tokens de ../style.css (Mercury); el acento claro #8f9bff es el del logo BR. */
+
+.ht { position: relative; isolation: isolate; padding-bottom: 28px; margin-bottom: 48px; }
+
+/* Capas decorativas: ocupan todo el ancho detrás del .wrap */
+.ht-fondo {
+  position: absolute; z-index: -1; top: -104px; bottom: 0;
+  left: calc(50% - 50vw); right: calc(50% - 50vw);
+  background:
+    radial-gradient(55% 65% at 76% 32%, rgba(82, 102, 235, 0.2), transparent 70%),
+    radial-gradient(45% 55% at 8% 0%, rgba(82, 102, 235, 0.09), transparent 70%),
+    linear-gradient(180deg, #11111d 0%, var(--fondo) 100%);
+  border-bottom: 1px solid rgba(237, 237, 243, 0.06);
+  pointer-events: none;
+}
+/* Grilla de red muy tenue */
+.ht-fondo::before {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(237, 237, 243, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 237, 243, 0.045) 1px, transparent 1px);
+  background-size: 56px 56px; background-position: center top;
+  -webkit-mask-image: radial-gradient(60% 75% at 70% 35%, #000 15%, transparent 75%);
+          mask-image: radial-gradient(60% 75% at 70% 35%, #000 15%, transparent 75%);
+}
+
+/* Contenido */
+.ht-principal { position: relative; display: grid; align-items: center; gap: 24px; }
+.ht-contenido { position: relative; z-index: 1; }
+.ht-eyebrow {
+  color: #8f9bff; font-size: 12px; font-weight: 530; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 16px;
+}
+.ht-titulo {
+  font-family: var(--titulos); font-stretch: 112%; font-weight: 560;
+  font-size: clamp(31px, 5.2vw, 56px); line-height: 1.06; letter-spacing: -0.005em;
+  max-width: 17ch; text-wrap: balance; color: var(--acento-texto);
+}
+.ht-bajada { color: var(--suave); font-size: clamp(16px, 2vw, 19px); line-height: 1.5; max-width: 34em; margin-top: 18px; text-wrap: pretty; }
+.ht-acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.ht-acciones .btn { min-height: 48px; }
+.ht-btn-secundario { gap: 8px; border-color: rgba(237, 237, 243, 0.35); }
+.ht-btn-secundario svg { flex: none; }
+.ht-acciones .btn:focus-visible, .ht-cat:focus-visible, .ht-marca a:focus-visible { outline: 2px solid #8f9bff; outline-offset: 3px; }
+
+/* Visual */
+.ht-visual { justify-self: end; width: min(100%, 400px); pointer-events: none; }
+.ht-visual svg { display: block; width: 100%; height: auto; }
+
+/* Accesos a categorías */
+.ht-categorias { margin-top: 32px; }
+.ht-cat-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.ht-cat {
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+  min-height: 104px; height: 100%; padding: 16px 8px; border-radius: var(--radio);
+  background: rgba(30, 30, 42, 0.72); border: 1px solid rgba(237, 237, 243, 0.08);
+  -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
+  color: var(--texto); text-decoration: none; font-size: 14px; line-height: 1.25; text-align: center;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+}
+.ht-cat-icono {
+  width: 28px; height: 28px; flex: none;
+  fill: none; stroke: #8f9bff; stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+  transition: transform 0.25s ease;
+}
+.ht-cat:hover, .ht-cat:focus-visible {
+  transform: translateY(-3px); background: rgba(34, 34, 50, 0.9); border-color: rgba(143, 155, 255, 0.55);
+  box-shadow: 0 12px 28px -14px rgba(82, 102, 235, 0.7);
+}
+.ht-cat:hover .ht-cat-icono, .ht-cat:focus-visible .ht-cat-icono { transform: translateY(-2px); }
+
+/* Marcas */
+.ht-marcas {
+  display: grid; gap: 12px 32px; align-items: center;
+  margin-top: 28px; padding-top: 20px; border-top: 1px solid rgba(237, 237, 243, 0.08);
+}
+.ht-marcas-titulo { color: var(--suave); font-size: 13px; white-space: nowrap; }
+.ht-marcas-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 28px; }
+.ht-marca { display: flex; align-items: center; min-height: 44px; white-space: nowrap; }
+.ht-marca img { height: 28px; width: auto; opacity: 0.8; transition: opacity 0.2s ease; }
+.ht-marca a { display: flex; align-items: center; min-height: 44px; color: inherit; text-decoration: none; }
+/* TODO: reemplazar por los logos oficiales (marcas/LEEME.md). Texto neutro, sin imitar logotipos. */
+.ht-marca-texto {
+  font-family: var(--titulos); font-stretch: 112%; font-weight: 520; font-size: 16px; letter-spacing: 0.02em;
+  color: var(--suave); transition: color 0.2s ease;
+}
+.ht-marca:hover img { opacity: 1; }
+.ht-marca:hover .ht-marca-texto { color: var(--texto); }
+.por-aparecer .ht-marca { opacity: 0; transform: translateY(8px); transition: opacity 0.5s ease, transform 0.5s ease; transition-delay: calc(var(--i) * 70ms); }
+.por-aparecer.visible .ht-marca { opacity: 1; transform: none; }
+
+.catalogo-titulo { font-size: clamp(24px, 4vw, 32px); font-weight: 480; margin-bottom: 16px; scroll-margin-top: 88px; }
+.catalogo-titulo:focus { outline: none; }
+
+/* ---- Animaciones (solo transform y opacity) ---- */
+.ht-entra { animation: ht-sube 0.6s cubic-bezier(0.22, 0.7, 0.2, 1) both; animation-delay: calc(var(--d) * 90ms); }
+.ht-visual { animation: ht-funde 1s 0.25s ease both; }
+@keyframes ht-sube { from { opacity: 0; transform: translateY(12px); } }
+@keyframes ht-funde { from { opacity: 0; } }
+
+.hv-giro { transform-box: view-box; transform-origin: 240px 240px; animation: hv-girar 140s linear infinite; }
+.hv-giro-lento { animation-duration: 70s; animation-direction: reverse; }
+@keyframes hv-girar { to { transform: rotate(360deg); } }
+.hv-halo { transform-box: fill-box; transform-origin: center; animation: hv-respira 9s ease-in-out infinite alternate; }
+@keyframes hv-respira { from { opacity: 0.7; transform: scale(0.97); } to { opacity: 1; transform: scale(1.02); } }
+.hv-iris { animation: hv-brillo 6s ease-in-out infinite alternate; }
+@keyframes hv-brillo { from { opacity: 0.82; } to { opacity: 1; } }
+.hv-pulso { opacity: 0; transform-box: fill-box; transform-origin: center; animation: hv-pulso 5s ease-in-out infinite; animation-delay: calc(var(--p, 0) * 1.7s); }
+@keyframes hv-pulso { 0%, 100% { opacity: 0; transform: scale(1); } 50% { opacity: 0.9; transform: scale(1.7); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .ht-entra { animation-name: ht-funde; animation-duration: 0.4s; }
+  .hv-giro, .hv-halo, .hv-iris, .hv-pulso { animation: none; }
+  .por-aparecer .ht-marca { transform: none; transition: opacity 0.3s ease; transition-delay: 0s; }
+  .ht-cat, .ht-cat-icono { transition: border-color 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease; }
+  .ht-cat:hover, .ht-cat:focus-visible, .ht-cat:hover .ht-cat-icono, .ht-cat:focus-visible .ht-cat-icono { transform: none; }
+}
+
+/* ---- Desktop (≥ 960): dos zonas ---- */
+@media (min-width: 960px) {
+  .ht-principal { grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr); min-height: 360px; }
+  .ht-marcas { grid-template-columns: auto 1fr; }
+}
+
+/* ---- Tablet (700–959): una columna, visual detrás ---- */
+@media (min-width: 700px) and (max-width: 959px) {
+  .ht-principal { grid-template-columns: 1fr; min-height: 340px; }
+  .ht-contenido { max-width: 560px; }
+  .ht-visual { position: absolute; z-index: 0; right: -48px; top: 50%; width: 360px; transform: translateY(-50%); opacity: 0.38; }
+  /* 4 + 3 con la segunda fila centrada (una grilla dejaría un hueco a la derecha) */
+  .ht-cat-lista { display: flex; flex-wrap: wrap; justify-content: center; }
+  .ht-cat-lista li { flex: 0 0 calc((100% - 30px) / 4); }
+  .ht-marcas-lista { justify-content: flex-start; }
+}
+
+/* ---- Mobile (< 700): título, bajada y CTA primero; categorías en carrusel ---- */
+@media (max-width: 699px) {
+  .tienda { padding-top: 88px; }
+  .ht-fondo { top: -88px; }
+  .ht-principal { grid-template-columns: 1fr; }
+  .ht-visual { position: absolute; z-index: 0; right: -84px; top: -36px; width: 250px; opacity: 0.24; }
+  .ht-eyebrow { font-size: 11px; letter-spacing: 0.14em; }
+  .ht-acciones .btn { flex: 1 1 100%; }
+
+  /* Carrusel con scroll-snap: la 4.ª tarjeta asoma cortada para indicar que se desliza */
+  .ht-categorias { margin: 32px -16px 0; }
+  .ht-cat-lista {
+    display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none;
+    padding: 4px 16px 8px; scroll-padding-inline: 16px;
+    -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent);
+            mask-image: linear-gradient(90deg, #000 85%, transparent);
+  }
+  .ht-cat-lista::-webkit-scrollbar { display: none; }
+  .ht-cat-lista li { flex: 0 0 max(88px, calc((100vw - 52px) / 3.4)); scroll-snap-align: start; }
+  .ht-cat { min-height: 96px; padding: 14px 6px; font-size: 13px; }
+
+  .ht-marcas { margin-top: 28px; }
+  .ht-marcas-titulo { text-align: center; }
+  .ht-marcas-lista { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0 12px; justify-items: center; }
+  .ht-marca-texto { font-size: 13px; text-align: center; }
+}
+
+/* Hasta el ancho máximo del .wrap el hero ocupa toda la pantalla y recorta lo que sobresale
+   (visual y carrusel): así no hay scroll horizontal. */
+@media (max-width: 1231px) {
+  .ht { margin-inline: -16px; padding-inline: 16px; overflow-x: clip; }
+  .ht-fondo { left: 0; right: 0; }
+}

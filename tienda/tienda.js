@@ -125,11 +125,33 @@
   };
 
   // ---- Catálogo ----
-  let categoria = 'Todos';
+  // ?categoria=<slug> filtra (lo usan los accesos del hero). Mismo slug que hero.js.
+  const slug = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  const categoriaDeUrl = () => {
+    const pedida = new URLSearchParams(location.search).get('categoria');
+    if (!pedida) return 'Todos';
+    if (pedida === 'otros') return 'Otros';
+    return T.categorias.find((c) => slug(c) === pedida) || 'Todos';
+  };
+  let categoria = categoriaDeUrl();
+  const elegirCategoria = (c, { historial = 'replace' } = {}) => {
+    categoria = c;
+    const url = c === 'Todos' ? location.pathname : `${location.pathname}?categoria=${slug(c)}`;
+    if (historial) history[historial === 'push' ? 'pushState' : 'replaceState'](null, '', url);
+    pintarCategorias();
+    pintarCatalogo();
+  };
+  // Para hero.js: filtrar sin recargar la página.
+  window.tiendaFiltrar = (c) => elegirCategoria(T.categorias.includes(c) ? c : 'Todos', { historial: 'push' });
+
   const pintarCatalogo = () => {
     const grid = $('productos');
     grid.replaceChildren();
     const visibles = T.productos.filter((p) => categoria === 'Todos' || (p.categoria || 'Otros') === categoria);
+    const cargo = $('tienda-error').hidden;
+    $('tienda-vacia').hidden = !(cargo && categoria === 'Todos' && T.productos.length === 0);
+    $('categoria-vacia').hidden = !(cargo && categoria !== 'Todos' && visibles.length === 0);
+    $('categoria-vacia-nombre').textContent = categoria;
     for (const p of visibles) {
       const card = el('button', 'producto');
       card.type = 'button';
@@ -150,14 +172,15 @@
     const cont = $('categorias');
     const usadas = T.categorias.filter((c) => T.productos.some((p) => p.categoria === c));
     if (T.productos.some((p) => !p.categoria)) usadas.push('Otros');
-    cont.hidden = usadas.length < 2;
+    if (categoria !== 'Todos' && !usadas.includes(categoria)) usadas.push(categoria);
+    cont.hidden = usadas.length < 2 && categoria === 'Todos';
     cont.replaceChildren();
     for (const c of ['Todos', ...usadas]) {
       const b = el('button', 'rubro', c);
       b.type = 'button';
       b.setAttribute('role', 'tab');
       b.setAttribute('aria-selected', String(c === categoria));
-      b.onclick = () => { categoria = c; pintarCategorias(); pintarCatalogo(); };
+      b.onclick = () => elegirCategoria(c);
       cont.append(b);
     }
   };
@@ -221,7 +244,11 @@
     if (porId.has(id)) abrirFicha(id, { historial: false });
     else if ($('ficha').open) $('ficha').close();
   };
-  window.addEventListener('popstate', segunHash);
+  window.addEventListener('popstate', () => {
+    const c = categoriaDeUrl();
+    if (c !== categoria) elegirCategoria(c, { historial: false });
+    segunHash();
+  });
   $('ficha').addEventListener('close', () => {
     if (location.hash) history.replaceState(null, '', location.pathname + location.search);
   });
@@ -280,7 +307,6 @@
   form.addEventListener('input', (e) => e.target.removeAttribute('aria-invalid'));
 
   // ---- Inicio ----
-  $('tienda-vacia').hidden = T.productos.length > 0 || !$('tienda-error').hidden;
   pintarCategorias();
   pintarCatalogo();
   pintarCarrito();

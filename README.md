@@ -29,3 +29,4 @@ Modelos 3D de terceros: ver créditos al pie de la página.
 - Carrito en el navegador del cliente (localStorage). El pedido se manda por WhatsApp con el detalle, y el pago es por transferencia (los datos de la cuenta se pasan por WhatsApp, no están en la web).
 - `brunorod.uy/tienda/#<id>` abre directo la ficha de un producto (sirve para compartir).
 - Al cambiar `config.js`, `tienda.js` o `tienda.css`, subir su `?v=` en `tienda/index.html`.
+- Hero de la tienda: título, bajada y botones en `tienda/index.html`; accesos a categorías y marcas en `tienda/config.js` → `hero` (lo arma `tienda/hero.js`, estilos en `tienda/hero.css`). Los logos oficiales van en `tienda/marcas/` (ver `LEEME.md` ahí). `?categoria=<slug>` abre la tienda filtrada.

@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Tienda · Bruno Rodríguez</title>
-  <meta name="description" content="Cámaras de seguridad y componentes tecnológicos. Pedí por WhatsApp y pagá por transferencia." />
+  <meta name="description" content="Cámaras de seguridad, alarmas, porteros, cerraduras inteligentes, DVR/NVR y redes para tu hogar, comercio o empresa. Pedí por WhatsApp." />
   <meta name="theme-color" content="#171721" />
   <meta property="og:title" content="Tienda · brunorod.uy" />
-  <meta property="og:description" content="Cámaras de seguridad y componentes tecnológicos. Pedí por WhatsApp." />
+  <meta property="og:description" content="Cámaras, alarmas, porteros, cerraduras inteligentes y redes. Pedí por WhatsApp." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://brunorod.uy/tienda/" />
   <meta property="og:image" content="https://brunorod.uy/img/og.jpg" />
@@ -18,11 +18,26 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css?v=52" />
-  <link rel="stylesheet" href="tienda.css?v=1" />
-  <script src="config.js?v=2" defer></script>
-  <script src="tienda.js?v=2" defer></script>
+  <link rel="stylesheet" href="tienda.css?v=2" />
+  <link rel="stylesheet" href="hero.css?v=1" />
+  <script src="config.js?v=3" defer></script>
+  <script src="hero.js?v=1" defer></script>
+  <script src="tienda.js?v=3" defer></script>
 </head>
 <body>
+  <!-- Íconos lineales de categorías (propios, grilla de 24 px; el trazo lo pone hero.css). -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <symbol id="ico-camara" viewBox="0 0 24 24"><path d="M3.5 8.2 15.6 5l2 6.3-12.1 3.2Z"/><path d="m17.1 9.6 3.4-1v4.6l-3-.6"/><path d="M8.6 13.6 9.4 17H5.5"/><path d="M5.5 15v4"/><circle cx="13.6" cy="8.9" r="1.1"/></symbol>
+      <symbol id="ico-alarma" viewBox="0 0 24 24"><path d="M7 17.5v-5.5a5 5 0 0 1 10 0v5.5"/><path d="M5 17.5h14v3H5Z"/><path d="M12 3v1.5M4.6 6.1l1.1 1.1M19.4 6.1l-1.1 1.1M2.5 12.5H4M20 12.5h1.5"/><path d="M10 12a2 2 0 0 1 2-2"/></symbol>
+      <symbol id="ico-portero" viewBox="0 0 24 24"><rect x="6.5" y="2.5" width="11" height="19" rx="2.2"/><circle cx="12" cy="7.6" r="2"/><path d="M9.5 12.5h5M9.5 15h5"/><circle cx="12" cy="18.4" r=".9"/></symbol>
+      <symbol id="ico-cerradura" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10.5" rx="2.2"/><path d="M8.2 10.5V7.3a3.8 3.8 0 0 1 7.6 0v3.2"/><circle cx="12" cy="15" r="1.3"/><path d="M12 16.3v1.9"/></symbol>
+      <symbol id="ico-redes" viewBox="0 0 24 24"><path d="M2.5 9.3a13.6 13.6 0 0 1 19 0"/><path d="M5.6 12.6a9.2 9.2 0 0 1 12.8 0"/><path d="M8.8 15.9a4.6 4.6 0 0 1 6.4 0"/><circle cx="12" cy="19.2" r="1"/></symbol>
+      <symbol id="ico-grabador" viewBox="0 0 24 24"><rect x="2.5" y="7" width="19" height="10" rx="2"/><path d="M6.2 12h.01M9 12h.01M13 12h5.5M5 17v2M19 17v2"/></symbol>
+      <symbol id="ico-accesorios" viewBox="0 0 24 24"><path d="M9.5 2.5v3.5M14.5 2.5v3.5"/><rect x="7.5" y="6" width="9" height="6" rx="1.4"/><path d="M12 12v3.2a3.3 3.3 0 0 0 3.3 3.3h5"/><path d="M3.5 18.5h4"/></symbol>
+      <symbol id="ico-whatsapp" viewBox="0 0 32 32"><path fill="currentColor" d="M16.04 3C9.4 3 4 8.35 4 14.93c0 2.1.56 4.16 1.62 5.97L4 27l6.28-1.63a12.1 12.1 0 0 0 5.76 1.46h.01C22.67 26.83 28 21.48 28 14.9 28 8.35 22.67 3 16.04 3Zm0 21.8h-.01a10 10 0 0 1-5.12-1.4l-.37-.22-3.72.97.99-3.6-.24-.37a9.8 9.8 0 0 1-1.52-5.25c0-5.47 4.47-9.92 9.99-9.92 2.67 0 5.18 1.03 7.06 2.9a9.8 9.8 0 0 1 2.93 7.02c0 5.47-4.48 9.87-9.99 9.87Zm5.48-7.4c-.3-.15-1.77-.87-2.05-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.95 1.17-.17.2-.35.22-.65.07-.3-.15-1.27-.46-2.42-1.48-.9-.8-1.5-1.78-1.67-2.08-.18-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.6-.92-2.2-.24-.57-.49-.5-.67-.5h-.57c-.2 0-.52.08-.8.37-.27.3-1.05 1.02-1.05 2.5 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.1 4.48.71.31 1.27.5 1.7.63.72.23 1.37.2 1.88.12.58-.09 1.77-.72 2.02-1.42.25-.7.25-1.3.17-1.42-.07-.12-.27-.2-.57-.35Z"/></symbol>
+    </defs>
+  </svg>
   <nav class="nav con-fondo" aria-label="Secciones">
     <a href="../" class="nav-brand" aria-label="Inicio">BR</a>
     <div class="nav-links">
@@ -37,16 +52,106 @@
   </nav>
 
   <main class="wrap tienda">
-    <header class="tienda-cab">
-      <p class="kicker">Tienda</p>
-      <h1>Cámaras y componentes</h1>
-      <p class="bajada">Elegí los productos, armá tu pedido y mandámelo por WhatsApp. Te confirmo stock y total, y pagás por transferencia.</p>
-    </header>
+    <!-- Hero. Título y CTA en HTML (LCP, SEO y funcionan sin JS); categorías y marcas salen de config.js (hero.js). -->
+    <section class="ht" aria-labelledby="ht-titulo">
+      <div class="ht-fondo" aria-hidden="true"></div>
 
+      <div class="ht-principal">
+        <div class="ht-contenido">
+          <p class="ht-eyebrow ht-entra" style="--d:0">Seguridad · Conectividad · Control</p>
+          <h1 class="ht-titulo ht-entra" id="ht-titulo" style="--d:1">Cámaras, alarmas y redes para cuidar lo que importa</h1>
+          <p class="ht-bajada ht-entra" style="--d:2">Todo lo que necesitás para proteger tu hogar, comercio o empresa.</p>
+          <div class="ht-acciones ht-entra" style="--d:3">
+            <a class="btn btn-primario" href="#catalogo" id="ht-cta">Ver productos</a>
+            <a class="btn ht-btn-secundario" id="ht-asesoria" href="https://wa.me/59898611824?text=Hola%20Bruno%2C%20quiero%20asesoramiento%20sobre%20seguridad%20y%20redes." target="_blank" rel="noopener">
+              <svg width="18" height="18" aria-hidden="true"><use href="#ico-whatsapp"/></svg>
+              Asesoramiento por WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual abstracto propio: lente + anillos + nodos de red. No representa ningún producto ni marca. -->
+        <div class="ht-visual" aria-hidden="true">
+          <svg viewBox="0 0 480 480" width="480" height="480" focusable="false">
+            <defs>
+              <radialGradient id="hv-halo" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#5266eb" stop-opacity=".34"/>
+                <stop offset=".55" stop-color="#5266eb" stop-opacity=".08"/>
+                <stop offset="1" stop-color="#5266eb" stop-opacity="0"/>
+              </radialGradient>
+              <radialGradient id="hv-cuerpo" cx="42%" cy="38%" r="70%">
+                <stop offset="0" stop-color="#2b2b42"/>
+                <stop offset="1" stop-color="#121219"/>
+              </radialGradient>
+              <radialGradient id="hv-vidrio" cx="40%" cy="36%" r="72%">
+                <stop offset="0" stop-color="#3b4cc4"/>
+                <stop offset=".45" stop-color="#1a1f52"/>
+                <stop offset="1" stop-color="#07070d"/>
+              </radialGradient>
+              <radialGradient id="hv-iris" cx="50%" cy="50%" r="50%">
+                <stop offset="0" stop-color="#8f9bff"/>
+                <stop offset=".5" stop-color="#5266eb"/>
+                <stop offset="1" stop-color="#1a1f52"/>
+              </radialGradient>
+              <linearGradient id="hv-borde" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#8f9bff" stop-opacity=".7"/>
+                <stop offset=".5" stop-color="#ededf3" stop-opacity=".08"/>
+                <stop offset="1" stop-color="#5266eb" stop-opacity=".45"/>
+              </linearGradient>
+            </defs>
+
+            <circle class="hv-halo" cx="240" cy="240" r="236" fill="url(#hv-halo)"/>
+
+            <g stroke="#8f9bff" stroke-opacity=".26" stroke-width="1" fill="none">
+              <path d="M58 132 132 74 240 38 362 70 432 150"/>
+              <path d="M432 150 452 268 398 380 292 448"/>
+              <path d="M58 132 30 252 82 368 176 440 292 448"/>
+              <path d="M132 74 176 128M362 70 318 120M452 268 400 250M82 368 130 336M30 252 84 240"/>
+            </g>
+            <g fill="#8f9bff">
+              <circle cx="58" cy="132" r="3"/><circle cx="132" cy="74" r="2.4"/><circle cx="240" cy="38" r="3.2"/>
+              <circle cx="362" cy="70" r="2.4"/><circle cx="432" cy="150" r="3"/><circle cx="452" cy="268" r="2.4"/>
+              <circle cx="398" cy="380" r="3"/><circle cx="292" cy="448" r="2.4"/><circle cx="176" cy="440" r="3"/>
+              <circle cx="82" cy="368" r="2.4"/><circle cx="30" cy="252" r="3"/>
+            </g>
+            <g fill="#ededf3">
+              <circle class="hv-pulso" cx="240" cy="38" r="3.2"/>
+              <circle class="hv-pulso" cx="432" cy="150" r="3" style="--p:1"/>
+              <circle class="hv-pulso" cx="82" cy="368" r="2.4" style="--p:2"/>
+            </g>
+
+            <circle class="hv-giro" cx="240" cy="240" r="196" fill="none" stroke="#8f9bff" stroke-opacity=".32" stroke-width="1" stroke-dasharray="2 10"/>
+            <circle cx="240" cy="240" r="168" fill="none" stroke="#ededf3" stroke-opacity=".08" stroke-width="1"/>
+            <circle class="hv-giro hv-giro-lento" cx="240" cy="240" r="168" fill="none" stroke="#5266eb" stroke-opacity=".8" stroke-width="1.6" stroke-linecap="round" stroke-dasharray="110 946"/>
+
+            <circle cx="240" cy="240" r="132" fill="url(#hv-cuerpo)" stroke="url(#hv-borde)" stroke-width="1.5"/>
+            <circle cx="240" cy="240" r="104" fill="#0b0b12" stroke="#ededf3" stroke-opacity=".06"/>
+            <circle cx="240" cy="240" r="90" fill="url(#hv-vidrio)"/>
+            <circle cx="240" cy="240" r="62" fill="none" stroke="#8f9bff" stroke-opacity=".22"/>
+            <circle class="hv-iris" cx="240" cy="240" r="30" fill="url(#hv-iris)"/>
+            <circle cx="240" cy="240" r="12" fill="#07070d"/>
+            <ellipse cx="206" cy="200" rx="30" ry="15" fill="#ededf3" fill-opacity=".14" transform="rotate(-35 206 200)"/>
+            <circle cx="228" cy="226" r="4" fill="#ededf3" fill-opacity=".7"/>
+          </svg>
+        </div>
+      </div>
+
+      <nav class="ht-categorias" aria-label="Categorías">
+        <ul class="ht-cat-lista" id="ht-categorias"></ul>
+      </nav>
+
+      <div class="ht-marcas">
+        <p class="ht-marcas-titulo" id="ht-marcas-titulo">Trabajamos con grandes marcas</p>
+        <ul class="ht-marcas-lista" id="ht-marcas" aria-labelledby="ht-marcas-titulo"></ul>
+      </div>
+    </section>
+
+    <h2 class="catalogo-titulo" id="catalogo" tabindex="-1">Productos</h2>
     <div class="rubros" role="tablist" id="categorias" aria-label="Categorías"></div>
     <div class="productos" id="productos"></div>
     <p class="tienda-vacia" id="tienda-cargando" hidden>Cargando productos…</p>
     <p class="tienda-vacia" id="tienda-error" hidden>No se pudieron cargar los productos. Recargá la página o <a href="https://wa.me/59898611824" target="_blank" rel="noopener">escribime por WhatsApp</a>.</p>
+    <p class="tienda-vacia" id="categoria-vacia" hidden>Todavía no cargué productos de <span id="categoria-vacia-nombre"></span>. <a href="https://wa.me/59898611824" target="_blank" rel="noopener">Escribime por WhatsApp</a> y te asesoro.</p>
     <p class="tienda-vacia" id="tienda-vacia" hidden>Estoy cargando los productos. Mientras tanto, <a id="vacia-wa" target="_blank" rel="noopener">escribime por WhatsApp</a> y te paso lo que tengo disponible.</p>
   </main>
 

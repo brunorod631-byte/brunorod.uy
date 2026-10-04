@@ -1,8 +1,6 @@
 /* Tienda: usa los tokens y componentes de ../style.css */
 
 .tienda { padding-top: 104px; padding-bottom: 72px; min-height: 70vh; }
-.tienda-cab { margin-bottom: 32px; }
-.tienda-cab h1 { font-size: clamp(32px, 7vw, 48px); font-weight: 480; letter-spacing: 0.01em; }
 .tienda-vacia { color: var(--suave); padding: 32px; border-radius: var(--radio); background: var(--panel); }
 
 .carrito-btn { gap: 8px; cursor: pointer; font: inherit; font-size: 14px; }
