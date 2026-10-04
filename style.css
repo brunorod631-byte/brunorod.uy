@@ -261,7 +261,6 @@ body.con-intro { overflow: hidden; }
 .intro-acciones { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 96px; }
 /* Botón de la tienda debajo: deja lugar para que su robot asome sin tapar el botón de arriba */
 .asoma-tienda { margin-top: 72px; }
-.intro-btn-tienda { background: rgba(23, 23, 33, 0.9); }
 .intro-btn { min-height: 52px; padding: 0 24px; }
 @media (max-width: 480px) {
   .intro-btn, .asoma { width: 100%; }
