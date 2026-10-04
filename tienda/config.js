@@ -18,6 +18,7 @@ window.TIENDA = {
       { categoria: 'Porteros', corto: 'Porteros', icono: 'portero' },
       { categoria: 'Cerraduras inteligentes', corto: 'Cerraduras', icono: 'cerradura' },
       { categoria: 'Redes y conectividad', corto: 'Redes y WiFi', icono: 'redes' },
+      { categoria: 'Electricidad inteligente', corto: 'Electricidad', icono: 'electricidad' },
       { categoria: 'DVR/NVR', corto: 'DVR/NVR', icono: 'grabador' },
       { categoria: 'Accesorios CCTV', corto: 'Accesorios', icono: 'accesorios' },
     ],

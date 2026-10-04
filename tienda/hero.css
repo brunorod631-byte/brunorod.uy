@@ -56,7 +56,7 @@
 
 /* Accesos a categorías */
 .ht-categorias { margin-top: 32px; }
-.ht-cat-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 10px; }
+.ht-cat-lista { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 10px; }
 .ht-cat {
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
   min-height: 104px; height: 100%; padding: 16px 8px; border-radius: var(--radio);
@@ -143,7 +143,7 @@
   .ht-principal { grid-template-columns: 1fr; min-height: 340px; }
   .ht-contenido { max-width: 560px; }
   .ht-visual { position: absolute; z-index: 0; right: -48px; top: 50%; width: 360px; transform: translateY(-50%); opacity: 0.38; }
-  /* 4 + 3 con la segunda fila centrada (una grilla dejaría un hueco a la derecha) */
+  /* Filas de 4 (con un número impar de categorías, la última fila queda centrada) */
   .ht-cat-lista { display: flex; flex-wrap: wrap; justify-content: center; }
   .ht-cat-lista li { flex: 0 0 calc((100% - 30px) / 4); }
 }
