@@ -63,7 +63,9 @@
       contenido.alt = m.nombre;
       contenido.loading = 'lazy';
       contenido.decoding = 'async';
-      contenido.height = 28;
+      contenido.height = 22;
+      // `escala` (opcional) compensa logos que traen mucho margen en el archivo.
+      if (m.escala) contenido.style.setProperty('--escala', m.escala);
     } else {
       contenido = document.createElement('span');
       contenido.className = 'ht-marca-texto';

@@ -1,17 +1,19 @@
 # Logos de marcas del hero
 
-Poné acá los logos **oficiales** (del kit de prensa o la web de cada marca), no versiones redibujadas.
+Logos **oficiales**, sacados del sitio de cada marca el 2026-10-04, sin modificar (ni colores ni formas;
+solo a Dahua se le recortó el margen transparente y se achicó).
 
-| Marca | Archivo |
-|---|---|
-| TP-Link / Tapo | `tp-link-tapo.svg` |
-| Hikvision | `hikvision.svg` |
-| Dahua | `dahua.svg` |
-| Intelbras | `intelbras.svg` |
-| EZVIZ | `ezviz.svg` |
-| Xiongmai | `xiongmai.svg` |
+| Marca | Archivo | Origen |
+|---|---|---|
+| TP-Link | `tp-link.svg` | static.tp-link.com/assets/images/icon/logo.svg (encabezado de tp-link.com) |
+| Tapo | `tapo.svg` | static.tapo.com/res/new-home/tapo.svg (encabezado de tapo.com) |
+| Hikvision | `hikvision.svg` | símbolo `icon-a-HikvisionLogo-R` del encabezado de hikvision.com (versión a color) |
+| Dahua | `dahua.png` | www.dahuasecurity.com/logo.png (encabezado) |
+| Intelbras | `intelbras.svg` | SVG del encabezado de intelbras.com/pt-br |
+| EZVIZ | `ezviz.svg` | SVG del encabezado de ezviz.com |
+| Xiongmai | — | **Falta**: xiongmaitech.com no respondía. Mientras tanto se muestra el nombre en texto. |
 
-- Formato: SVG preferido; si no hay, PNG de al menos 400 px de ancho con fondo transparente.
-- Si la marca tiene versión **blanca o monocromo** oficial, usá esa (el fondo de la tienda es oscuro).
-- Después, en `tienda/config.js` → `hero.marcas`, cambiá `logo: null` por la ruta, por ejemplo `logo: 'marcas/hikvision.svg'`.
-- El hero los muestra todos a la misma altura (28 px). Si uno se ve chico o grande porque el archivo trae mucho margen, recortalo.
+- En el hero se muestran a color sobre una pastilla clara (`hero.css`, `.ht-marca`), todas a la misma altura.
+- Para agregar o cambiar uno: poné el archivo acá y completá `logo` en `tienda/config.js` → `hero.marcas`.
+  Si se ve chico porque el archivo trae mucho margen, agregá `escala: 1.2` (o lo que haga falta).
+- Si una marca te pasa su kit oficial (por ejemplo vía el distribuidor), preferí ese archivo.

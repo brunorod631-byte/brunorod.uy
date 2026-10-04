@@ -21,15 +21,17 @@ window.TIENDA = {
       { categoria: 'DVR/NVR', corto: 'DVR/NVR', icono: 'grabador' },
       { categoria: 'Accesorios CCTV', corto: 'Accesorios', icono: 'accesorios' },
     ],
-    // `logo`: ruta al logo oficial (ver marcas/LEEME.md). Mientras sea null se muestra el nombre en texto.
-    // TODO: cargar los logos oficiales y completar `logo` en cada una.
+    // `logo`: logo oficial (sacado del sitio de cada marca, sin modificar; ver marcas/LEEME.md).
+    // Si es null se muestra el nombre en texto. `escala` agranda un logo que se ve chico (1 = normal).
     marcas: [
-      { nombre: 'TP-Link / Tapo', logo: null }, // marcas/tp-link-tapo.svg
-      { nombre: 'Hikvision', logo: null }, // marcas/hikvision.svg
-      { nombre: 'Dahua', logo: null }, // marcas/dahua.svg
-      { nombre: 'Intelbras', logo: null }, // marcas/intelbras.svg
-      { nombre: 'EZVIZ', logo: null }, // marcas/ezviz.svg
-      { nombre: 'Xiongmai', logo: null }, // marcas/xiongmai.svg
+      { nombre: 'TP-Link', logo: 'marcas/tp-link.svg', escala: 1.35 },
+      { nombre: 'Tapo', logo: 'marcas/tapo.svg' },
+      { nombre: 'Hikvision', logo: 'marcas/hikvision.svg' },
+      { nombre: 'Dahua', logo: 'marcas/dahua.png' },
+      { nombre: 'Intelbras', logo: 'marcas/intelbras.svg' },
+      { nombre: 'EZVIZ', logo: 'marcas/ezviz.svg' },
+      // TODO: el sitio oficial (xiongmaitech.com) no respondía el 2026-10-04; cargar marcas/xiongmai.svg.
+      { nombre: 'Xiongmai', logo: null },
     ],
   },
 };
