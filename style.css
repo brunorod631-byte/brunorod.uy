@@ -381,7 +381,8 @@ body.con-intro { overflow: hidden; }
 .wa-flotante {
   position: fixed; right: 18px; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); z-index: 40;
   width: 58px; height: 58px; border-radius: 50%; display: grid; place-items: center;
-  background: var(--acento); color: var(--acento-texto);
+  background: #25d366; color: #0b0b10; /* verde WhatsApp con logo negro, igual que el botón de la tienda */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
   transition: transform 0.15s ease;
 }
 .wa-flotante:hover { transform: scale(1.06); }
