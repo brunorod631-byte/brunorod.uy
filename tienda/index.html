@@ -19,8 +19,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,300..700&family=Inter:wght@300..700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="../style.css?v=52" />
   <link rel="stylesheet" href="tienda.css?v=1" />
-  <script src="productos.js?v=1" defer></script>
-  <script src="tienda.js?v=1" defer></script>
+  <script src="config.js?v=2" defer></script>
+  <script src="tienda.js?v=2" defer></script>
 </head>
 <body>
   <nav class="nav con-fondo" aria-label="Secciones">
@@ -45,6 +45,8 @@
 
     <div class="rubros" role="tablist" id="categorias" aria-label="Categorías"></div>
     <div class="productos" id="productos"></div>
+    <p class="tienda-vacia" id="tienda-cargando" hidden>Cargando productos…</p>
+    <p class="tienda-vacia" id="tienda-error" hidden>No se pudieron cargar los productos. Recargá la página o <a href="https://wa.me/59898611824" target="_blank" rel="noopener">escribime por WhatsApp</a>.</p>
     <p class="tienda-vacia" id="tienda-vacia" hidden>Estoy cargando los productos. Mientras tanto, <a id="vacia-wa" target="_blank" rel="noopener">escribime por WhatsApp</a> y te paso lo que tengo disponible.</p>
   </main>
 

@@ -1,9 +1,27 @@
-// Tienda: catálogo desde productos.js, carrito en localStorage y pedido por WhatsApp.
+// Tienda: catálogo desde la API (se carga en el panel /admin), carrito en localStorage y pedido por WhatsApp.
 
-(() => {
+(async () => {
   const T = window.TIENDA;
   const $ = (id) => document.getElementById(id);
   const CLAVE = 'brunorod-carrito';
+  const API = T.api || '/api/tienda';
+
+  $('anio').textContent = new Date().getFullYear();
+  $('vacia-wa').href = `https://wa.me/${T.whatsapp}?text=${encodeURIComponent('Hola Bruno, quiero consultar por cámaras y componentes.')}`;
+  $('tienda-cargando').hidden = false;
+  try {
+    const r = await fetch(`${API}/catalogo`);
+    if (!r.ok) throw new Error(r.status);
+    const datos = await r.json();
+    T.categorias = datos.categorias;
+    T.productos = datos.productos.map((p) => ({ ...p, fotos: p.fotos.map((k) => `${API}/fotos/${k}`) }));
+  } catch (err) {
+    console.error('catalogo', err);
+    T.categorias = [];
+    T.productos = [];
+    $('tienda-error').hidden = false;
+  }
+  $('tienda-cargando').hidden = true;
   const porId = new Map(T.productos.map((p) => [p.id, p]));
 
   const formatos = {};
@@ -111,7 +129,7 @@
   const pintarCatalogo = () => {
     const grid = $('productos');
     grid.replaceChildren();
-    const visibles = T.productos.filter((p) => categoria === 'Todos' || p.categoria === categoria);
+    const visibles = T.productos.filter((p) => categoria === 'Todos' || (p.categoria || 'Otros') === categoria);
     for (const p of visibles) {
       const card = el('button', 'producto');
       card.type = 'button';
@@ -120,7 +138,7 @@
       img.append(foto(p));
       if (p.stock === false) img.append(el('span', 'etiqueta-stock', 'Sin stock'));
       const cuerpo = el('div', 'producto-cuerpo');
-      cuerpo.append(el('span', 'producto-cat', p.categoria), el('strong', 'producto-nombre', p.nombre));
+      cuerpo.append(el('span', 'producto-cat', p.categoria || ''), el('strong', 'producto-nombre', p.nombre));
       if (p.resumen) cuerpo.append(el('span', 'producto-resumen', p.resumen));
       cuerpo.append(el('span', 'producto-precio', textoPrecio(p)));
       card.append(img, cuerpo);
@@ -131,6 +149,7 @@
   const pintarCategorias = () => {
     const cont = $('categorias');
     const usadas = T.categorias.filter((c) => T.productos.some((p) => p.categoria === c));
+    if (T.productos.some((p) => !p.categoria)) usadas.push('Otros');
     cont.hidden = usadas.length < 2;
     cont.replaceChildren();
     for (const c of ['Todos', ...usadas]) {
@@ -152,7 +171,7 @@
     fichaId = id;
     fichaCant = 1;
     $('ficha-cantidad').textContent = 1;
-    $('ficha-categoria').textContent = p.categoria;
+    $('ficha-categoria').textContent = p.categoria || '';
     $('ficha-nombre').textContent = p.nombre;
     $('ficha-precio').textContent = textoPrecio(p);
 
@@ -261,9 +280,7 @@
   form.addEventListener('input', (e) => e.target.removeAttribute('aria-invalid'));
 
   // ---- Inicio ----
-  $('anio').textContent = new Date().getFullYear();
-  $('vacia-wa').href = `https://wa.me/${T.whatsapp}?text=${encodeURIComponent('Hola Bruno, quiero consultar por cámaras y componentes.')}`;
-  $('tienda-vacia').hidden = T.productos.length > 0;
+  $('tienda-vacia').hidden = T.productos.length > 0 || !$('tienda-error').hidden;
   pintarCategorias();
   pintarCatalogo();
   pintarCarrito();
