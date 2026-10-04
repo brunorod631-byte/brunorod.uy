@@ -24,7 +24,8 @@ Modelos 3D de terceros: ver créditos al pie de la página.
 
 ## Tienda (`/tienda/`)
 
-- `tienda/productos.js`: catálogo (el formato está explicado arriba del archivo). Fotos en `tienda/img/`.
+- Productos, categorías y fotos se cargan en el panel `brunorod.uy/admin` (Worker `cv-tienda`, repo aparte) y la tienda los lee de `/api/tienda/catalogo`.
+- `tienda/config.js`: WhatsApp, texto de pago y opciones de entrega.
 - Carrito en el navegador del cliente (localStorage). El pedido se manda por WhatsApp con el detalle, y el pago es por transferencia (los datos de la cuenta se pasan por WhatsApp, no están en la web).
 - `brunorod.uy/tienda/#<id>` abre directo la ficha de un producto (sirve para compartir).
-- Al cambiar productos, subir el `?v=` de `productos.js` en `tienda/index.html`.
+- Al cambiar `config.js`, `tienda.js` o `tienda.css`, subir su `?v=` en `tienda/index.html`.
