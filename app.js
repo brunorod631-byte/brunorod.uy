@@ -161,15 +161,6 @@
   }
   mostrarRepo(repos[0]);
 
-  // --- Trayectoria ---
-  for (const [fecha, titulo, texto] of cv.trayectoria) {
-    $('linea').append(el('li', {},
-      fecha ? el('p', { class: 'etiqueta', text: fecha }) : null,
-      el('h3', { text: titulo }), el('p', { text: texto })));
-  }
-  for (const f of cv.formacion) $('formacion').append(el('li', { text: f }));
-  for (const h of cv.habilidades) $('habilidades').append(el('li', { text: h }));
-
   // --- Contacto ---
   const c = cv.contacto;
   const tarjetas = [

@@ -1,4 +1,4 @@
-// Contenido del CV. Es la única fuente de datos: index.html se arma desde acá.
+// Contenido de la web. Es la única fuente de datos: index.html se arma desde acá.
 // Los PR son datos reales de GitHub (gh pr list), repos privados.
 
 window.CV = {
@@ -7,8 +7,7 @@ window.CV = {
   lugar: 'Uruguay',
   resumen:
     'Construyo software que resuelve problemas reales de negocio: apps Android, bots de Telegram y tiendas online. ' +
-    'También vendo e instalo cámaras de seguridad, alarmas y redes, con asesoramiento. ' +
-    'Sumo formación en redes (UTEC), ciberseguridad ofensiva y experiencia en ventas y atención al cliente.',
+    'También vendo e instalo cámaras de seguridad, alarmas y redes, con asesoramiento.',
 
   contacto: {
     whatsapp: 'https://wa.me/59898611824',
@@ -117,25 +116,6 @@ window.CV = {
     { src: 'img/prs/bot-ferreteria-36-libreta-credito.webp', texto: 'Bot ferretería #36 — Libreta de crédito (fiado) en Telegram, con tests' },
     { src: 'img/prs/camlibre-8-rediseno.webp', texto: 'CamLibre #8 — Rediseño completo de la interfaz' },
     { src: 'img/prs/pambauy-1-video-ffmpeg.webp', texto: 'App de mensajería #1 — Video en estados, borrando los datos GPS con ffmpeg' },
-  ],
-
-  trayectoria: [
-    ['Actualidad · +2 años', 'Desarrollador freelance', 'Apps Android, bots de Telegram, tiendas Shopify y automatizaciones a medida para clientes reales.'],
-    ['', 'Gestión comercial y digital — Ferretería (San José)', 'Atención al cliente, ventas, asesoramiento técnico y administración de la tienda online.'],
-    ['', 'Pasante en elaboración de proyectos — Gobierno de Canarias (España)', 'Proyectos urbanos y rurales durante una pasantía institucional.'],
-    ['', 'Vendedor remoto — Empresa española de insumos tecnológicos', 'Venta y asesoramiento a distancia, seguimiento y postventa.'],
-    ['', 'Asistente — Ejército Nacional, Batallón de Ingenieros N.º 4 (Maldonado)', 'Apoyo operativo y trabajo en equipo.'],
-  ],
-  formacion: [
-    'Redes — UTEC',
-    'Ciberseguridad / Pentesting — TheBigSchool',
-    'Instalación de CCTV',
-    'Encargado de Establecimientos Rurales — Plan Agropecuario',
-  ],
-  habilidades: [
-    'Kotlin · Jetpack Compose', 'Python', 'React Native · Expo', 'Node.js · TypeScript', 'Next.js',
-    'Bots de Telegram', 'Shopify', 'Git · GitHub', 'Docker',
-    'Redes', 'Kali Linux · Nmap · Wireshark', 'Instalación de CCTV', 'SEO',
   ],
 
   creditos: [
