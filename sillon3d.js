@@ -1,10 +1,11 @@
-// Sillón 3D de la bienvenida: gira, se desarma y una barrida de luz lo pasa de malla a real.
+// Modelo 3D de la bienvenida (antes el sillón, ahora la cámara domo): gira, se desarma y una barrida
+// de luz lo pasa de malla a real. Sirve para cualquier .glb con piezas sueltas.
 import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.170.0/+esm';
 import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/loaders/GLTFLoader.js/+esm';
 import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js/+esm';
 
 // seguir(): mientras devuelva true se sigue dibujando; al cerrarse la bienvenida se libera todo
-export function iniciarSillon(contenedor, seguir) {
+export function iniciarSillon(contenedor, seguir, src = 'models/sillon.glb') {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
@@ -99,7 +100,7 @@ export function iniciarSillon(contenedor, seguir) {
   const malla = new THREE.MeshBasicMaterial({ color: 0x5266eb, wireframe: true, transparent: true, opacity: 0.55, depthWrite: false, clippingPlanes: [corteMalla] });
   const piezas = [];
 
-  new GLTFLoader().load('models/sillon.glb', (gltf) => {
+  new GLTFLoader().load(src, (gltf) => {
     const modelo = gltf.scene;
     // Normalizar: 1 unidad de alto, centrado, apoyado en el piso
     const caja = new THREE.Box3().setFromObject(modelo);
@@ -110,7 +111,7 @@ export function iniciarSillon(contenedor, seguir) {
     modelo.position.set(-centro.x, -caja.min.y * escala, -centro.z);
     modelo.updateMatrixWorld(true);
 
-    const centroSillon = new THREE.Vector3(0, 0.45, 0);
+    const centroSillon = new THREE.Vector3(0, 0.5, 0);
     const originales = [];
     modelo.traverse((o) => { if (o.isMesh) originales.push(o); });
     for (const o of originales) {

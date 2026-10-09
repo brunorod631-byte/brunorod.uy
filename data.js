@@ -240,6 +240,7 @@ window.CV = {
   ],
 
   creditos: [
+    '"Security Camera" — Vladyslav Holhanov (Sketchfab), CC BY 4.0 · usado en la bienvenida',
     '"Pomo Inteligente para Entrada del Hogar" — Eonesia_world (Sketchfab), CC BY 4.0 · usado en la tienda',
     'Pizza "BigBoss" — ponomarovmax (Sketchfab), CC BY 4.0',
     '"Strawberry Chocolate Cake" — Poly Haven, CC0',

@@ -121,8 +121,8 @@
   if (!intro.hidden) {
     // El 3D se descarga solo si se ve la bienvenida; si falla (sin WebGL) queda el texto solo
     const sillon = $('sillon-intro');
-    import('./sillon3d.js?v=2')
-      .then((m) => m.iniciarSillon(sillon, () => !intro.hidden))
+    import('./sillon3d.js?v=3')
+      .then((m) => m.iniciarSillon(sillon, () => !intro.hidden, 'models/camara-domo.glb'))
       .catch(() => { sillon.hidden = true; });
   }
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
