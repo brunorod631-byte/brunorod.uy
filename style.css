@@ -241,7 +241,7 @@ body.con-intro { overflow: hidden; }
   background: transparent; color: var(--texto);
   font-size: 14px; font-weight: 400; letter-spacing: 0.005em;
 }
-.intro-ra { padding: 2px 10px; border-radius: var(--pildora); background: var(--fondo-2); color: var(--texto); font-size: 0.8em; }
+.intro-etiqueta { padding: 2px 10px; border-radius: var(--pildora); background: var(--fondo-2); color: var(--texto); font-size: 0.8em; }
 .carrusel-ayuda { text-align: center; color: var(--suave); font-size: 12px; font-weight: 480; letter-spacing: 0.01em; }
 .carrusel { padding: 12px 0 32px; overflow: hidden; }
 .carrusel-pista { display: flex; gap: 12px; width: max-content; animation: desfile 70s linear infinite; }
@@ -265,12 +265,14 @@ body.con-intro { overflow: hidden; }
 @media (max-width: 480px) {
   .intro-btn, .asoma { width: 100%; }
   /* Con dos botones: sillón y espacios más compactos para que el de la tienda entre en pantalla */
-  .intro-cuerpo { padding-top: 20px; }
-  .intro .sillon3d { width: min(100%, 300px); margin-bottom: 12px; }
+  .intro-cuerpo { padding-top: 8px; }
+  .intro .sillon3d { width: min(100%, 290px); margin-bottom: 4px; }
   .intro-acciones { margin-top: 80px; }
-  .asoma-tienda { margin-top: 58px; }
+  .asoma-tienda { margin-top: 54px; }
+  .intro-cuerpo h1 { font-size: clamp(28px, 7.4vw, 34px); }
+  .intro-cuerpo > p:not(.kicker) { font-size: 16px; }
 }
-@media (max-width: 400px) { .intro .sillon3d { width: min(100%, 250px); } }
+@media (max-width: 400px) { .intro .sillon3d { width: min(100%, 210px); } }
 
 /* Robot que asoma por detrás del botón y saluda */
 .asoma { position: relative; display: flex; isolation: isolate; }
