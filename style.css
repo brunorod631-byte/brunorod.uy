@@ -165,8 +165,8 @@ p { margin: 0; }
 
 /* Secciones */
 .seccion { padding-top: 72px; padding-bottom: 0; }
-/* Robot que cruza la pantalla entre la portada y Realidad Aumentada (robotpaseo.js) */
-#ra { position: relative; }
+/* Robot que cruza la pantalla entre la portada y Proyectos (robotpaseo.js) */
+#proyectos { position: relative; }
 .paseo { position: absolute; top: -72px; left: calc(50% - 50vw); width: 100vw; height: 144px; pointer-events: none; }
 .paseo canvas { display: block; width: 100% !important; height: 100% !important; opacity: 0; transition: opacity 0.6s ease; }
 .paseo.listo canvas { opacity: 1; }

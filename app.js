@@ -24,7 +24,7 @@
   $('btn-compartir').addEventListener('click', async () => {
     const datos = {
       title: 'Bruno Rodríguez · Desarrollador',
-      text: 'Apps, bots, web y Realidad Aumentada. Probá las demos desde tu celular.',
+      text: 'Tienda de seguridad y conectividad, con instalación y asesoramiento. También apps, bots y web.',
       url: 'https://brunorod.uy/',
     };
     if (navigator.share) {
@@ -33,67 +33,6 @@
     }
     window.open('https://wa.me/?text=' + encodeURIComponent(datos.text + ' ' + datos.url), '_blank', 'noopener');
   });
-
-  // --- Realidad Aumentada ---
-  const visor = $('visor');
-  const esCelular = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  $('ra-aviso').hidden = esCelular;
-
-  let demoActual = null;
-
-  // Carga un modelo en el visor. Los rubros con varios modelos (d.modelos) llaman una vez por modelo elegido.
-  function cargarModelo(m, d) {
-    visor.setAttribute('src', m.src);
-    visor.setAttribute('alt', m.alt);
-    visor.setAttribute('scale', m.scale || d.scale || '1 1 1');
-    visor.setAttribute('camera-orbit', m.orbit);
-    // Tamaño real: en RA no se deja achicar/agrandar, así el cliente ve si el mueble entra.
-    visor.setAttribute('ar-scale', d.tamanoReal ? 'fixed' : 'auto');
-    // Lo que va colgado (aire split) se apoya en la pared en vez del piso.
-    visor.setAttribute('ar-placement', m.pared ? 'wall' : 'floor');
-    if (d.animado) visor.setAttribute('autoplay', ''); else visor.removeAttribute('autoplay');
-    $('ra-medidas').hidden = true;
-    for (const b of $('ra-modelos').children) b.setAttribute('aria-pressed', String(b.textContent === m.nombre));
-  }
-
-  const medida = (n) => n.toLocaleString('es-UY', { maximumFractionDigits: 2 });
-  visor.addEventListener('load', () => {
-    const d = demoActual;
-    if (!d || !d.tamanoReal) return;
-    const t = visor.getDimensions();
-    $('ra-medidas').textContent = `Medidas: ${medida(t.x)} × ${medida(t.z)} m · alto ${medida(t.y)} m`;
-    $('ra-medidas').hidden = false;
-  });
-
-  function mostrarDemo(d, indice = 0) {
-    demoActual = d;
-    const modelos = $('ra-modelos');
-    modelos.replaceChildren();
-    modelos.hidden = !d.modelos;
-    for (const m of d.modelos || []) {
-      const b = el('button', { class: 'modelo', type: 'button', text: m.nombre });
-      b.addEventListener('click', () => cargarModelo(m, d));
-      modelos.append(b);
-    }
-    cargarModelo(d.modelos ? d.modelos[indice] : d, d);
-    $('ar-btn-texto').textContent = d.boton;
-    $('ra-rubro').textContent = d.rubro;
-    $('ra-titulo').textContent = d.titulo;
-    $('ra-texto').textContent = d.texto;
-    const extra = $('ra-extra');
-    extra.hidden = !d.extra;
-    if (d.extra) { extra.href = d.extra.href; extra.textContent = d.extra.texto + ' →'; }
-    for (const b of $('rubros').children) b.setAttribute('aria-selected', String(b.dataset.id === d.id));
-  }
-  for (const d of cv.ra) {
-    const b = el('button', { class: 'rubro', type: 'button', role: 'tab', 'data-id': d.id, text: d.rubro });
-    b.addEventListener('click', () => mostrarDemo(d));
-    $('rubros').append(b);
-  }
-  // Permite abrir un rubro directo desde el QR: .../#ra-automotoras
-  const inicial = cv.ra.find((d) => location.hash === '#ra-' + d.id) || cv.ra[0];
-  mostrarDemo(inicial);
-  if (location.hash.startsWith('#ra-')) $('ra').scrollIntoView();
 
   // --- Intro ---
   // Se muestra al entrar por la dirección general. Si el QR trae un #sección, va directo.
@@ -128,12 +67,12 @@
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !intro.hidden) cerrarIntro(); });
 
   // --- Link siempre limpio: brunorod.uy, sin ?v=, ?fbclid= ni #sección en la barra ---
-  // Primero se usa lo que trae el link (el QR con #ra-restaurantes abre esa demo) y después se borra.
+  // Primero se usa lo que trae el link (#sección) y después se borra.
   const destino = location.hash.slice(1);
   if (location.search || location.hash) history.replaceState(null, '', location.pathname);
   const irA = (id) => {
     if (id === 'inicio') { scrollTo({ top: 0 }); return; }
-    const seccion = $(id.startsWith('ra-') ? 'ra' : id);
+    const seccion = $(id);
     if (seccion) seccion.scrollIntoView();
   };
   if (destino) requestAnimationFrame(() => irA(destino));
@@ -145,7 +84,7 @@
     irA(a.getAttribute('href').slice(1));
   });
 
-  // Robot que cruza la pantalla arriba de Realidad Aumentada: se carga al acercarse y solo se mueve a la vista
+  // Robot que cruza la pantalla arriba de Proyectos: se carga al acercarse y solo se mueve a la vista
   const paseo = $('paseo');
   let paseoVisible = false;
   new IntersectionObserver(([e]) => {
@@ -157,12 +96,6 @@
         .catch(() => { paseo.hidden = true; });
     }
   }, { rootMargin: '300px' }).observe(paseo);
-
-  visor.addEventListener('progress', (e) => {
-    const p = e.detail.totalProgress;
-    $('progreso').style.width = p * 100 + '%';
-    $('progreso').parentElement.classList.toggle('oculto', p >= 1);
-  });
 
   // --- Proyectos ---
   for (const p of cv.proyectos) {

@@ -3,11 +3,11 @@
 
 window.CV = {
   nombre: 'Bruno Rodríguez',
-  titulo: 'Desarrollador freelance · Apps, bots, web y Realidad Aumentada',
+  titulo: 'Desarrollador freelance · Apps, bots y web · Seguridad y redes',
   lugar: 'Uruguay',
   resumen:
-    'Construyo software que resuelve problemas reales de negocio: apps Android, bots de Telegram, ' +
-    'tiendas online y experiencias de Realidad Aumentada que se abren desde el celular, sin instalar nada. ' +
+    'Construyo software que resuelve problemas reales de negocio: apps Android, bots de Telegram y tiendas online. ' +
+    'También vendo e instalo cámaras de seguridad, alarmas y redes, con asesoramiento. ' +
     'Sumo formación en redes (UTEC), ciberseguridad ofensiva y experiencia en ventas y atención al cliente.',
 
   contacto: {
@@ -17,99 +17,6 @@ window.CV = {
     linkedin: 'https://linkedin.com/in/brunorodriguez-dev',
     github: 'https://github.com/brunorod631-byte',
   },
-
-  // Demos de RA por rubro (restaurantes primero).
-  ra: [
-    {
-      id: 'restaurantes',
-      rubro: 'Restaurantes',
-      titulo: 'El plato, servido en tu mesa',
-      texto:
-        'El cliente escanea un QR en la carta y ve el plato en 3D, a tamaño real, sobre su mesa antes de pedirlo. ' +
-        'Ideal para promocionar platos del día y aumentar el ticket.',
-      boton: 'Ver en mi mesa',
-      modelos: [
-        { nombre: 'Pizza', src: 'models/pizza-bigboss.glb', alt: 'Pizza en 3D', scale: '0.5 0.5 0.5', orbit: '30deg 55deg auto' },
-        { nombre: 'Hamburguesa', src: 'models/hamburguesa.glb', alt: 'Hamburguesa en 3D', scale: '0.022 0.022 0.022', orbit: '30deg 70deg auto' },
-        { nombre: 'Spaghetti con albóndigas', src: 'models/spaghetti.glb', alt: 'Plato de spaghetti con albóndigas en 3D', scale: '0.0277 0.0277 0.0277', orbit: '30deg 55deg auto' },
-        { nombre: 'Torta de chocolate y frutillas', src: 'models/torta-frutillas.glb', alt: 'Torta de chocolate con frutillas en 3D', orbit: '30deg 60deg auto' },
-      ],
-    },
-    {
-      id: 'muebles',
-      rubro: 'Mueblerías e inmobiliarias',
-      titulo: 'El mueble, en el living del cliente',
-      texto:
-        'El cliente ve el mueble a tamaño real en su casa antes de comprarlo y comprueba si entra. ' +
-        'Para inmobiliarias: amueblar un ambiente vacío durante la visita para que se imaginen viviendo ahí.',
-      boton: 'Ver en mi living',
-      tamanoReal: true,
-      modelos: [
-        { nombre: 'Sofá', src: 'models/sofa-terciopelo.glb', alt: 'Sofá de terciopelo en 3D', orbit: '25deg 70deg auto' },
-        { nombre: 'Sillón', src: 'models/sillon.glb', alt: 'Sillón en 3D', orbit: '25deg 70deg auto' },
-        { nombre: 'Mesa de comedor', src: 'models/mesa-comedor.glb', alt: 'Mesa de comedor de madera en 3D', orbit: '25deg 60deg auto' },
-        { nombre: 'Mesa de luz', src: 'models/mesa-de-luz-cajon.glb', alt: 'Mesa de luz de madera pintada con cajón en 3D', orbit: '25deg 70deg auto' },
-      ],
-    },
-    {
-      id: 'electrodomesticos',
-      rubro: 'Electrodomésticos',
-      titulo: 'Mirá cómo queda en tu casa antes de comprarlo',
-      texto:
-        'El cliente proyecta el electrodoméstico a tamaño real en su cocina, lavadero o living y comprueba si entra. ' +
-        'Menos devoluciones y más confianza para comprar online.',
-      boton: 'Ver en mi casa',
-      tamanoReal: true,
-      modelos: [
-        { nombre: 'Heladera doble puerta', src: 'models/heladera.glb', alt: 'Heladera doble puerta en 3D', scale: '0.92 0.92 0.92', orbit: '20deg 75deg auto' },
-        { nombre: 'Lavarropas', src: 'models/lavarropas.glb', alt: 'Lavarropas en 3D', scale: '0.0357 0.0357 0.0357', orbit: '20deg 75deg auto' },
-        { nombre: 'Microondas', src: 'models/microondas.glb', alt: 'Microondas en 3D', scale: '0.00909 0.00909 0.00909', orbit: '15deg 75deg auto' },
-        { nombre: 'Smart TV 55"', src: 'models/tv-led.glb', alt: 'Televisor LED de 55 pulgadas en 3D', scale: '0.0946 0.0946 0.0946', orbit: '20deg 80deg auto' },
-        { nombre: 'Aire acondicionado split', src: 'models/aire-split.glb', alt: 'Aire acondicionado split en 3D', scale: '0.439 0.439 0.439', orbit: '20deg 80deg auto', pared: true },
-        { nombre: 'Licuadora', src: 'models/licuadora.glb', alt: 'Licuadora en 3D', scale: '0.1 0.1 0.1', orbit: '-25deg 70deg auto' },
-      ],
-    },
-    {
-      id: 'automotoras',
-      rubro: 'Automotoras',
-      titulo: 'El auto, en el garaje del cliente',
-      texto:
-        'Mirá el auto desde todos los ángulos y proyectalo a escala real en la calle o en el garaje. ' +
-        'Sirve para vender unidades que todavía no llegaron al local.',
-      src: 'models/porsche-911.glb',
-      alt: 'Porsche 911 en 3D',
-      scale: '1 1 1',
-      orbit: '-35deg 75deg auto',
-      boton: 'Ver en mi espacio',
-    },
-    {
-      id: 'interactivo',
-      rubro: 'Experiencias',
-      titulo: 'Un personaje que reacciona',
-      texto:
-        'Personaje animado para vidrieras, eventos o cumpleaños infantiles. ' +
-        'La versión completa responde al toque y camina por el piso.',
-      src: 'models/robot-expresivo.glb',
-      alt: 'Robot animado en 3D',
-      scale: '0.6 0.6 0.6',
-      orbit: '20deg 75deg auto',
-      boton: 'Verlo en el piso',
-      animado: true,
-      extra: { texto: 'Abrir la experiencia interactiva completa', href: 'https://brunorod631-byte.github.io/webar-demo/xr.html' },
-    },
-    {
-      id: 'tiendas',
-      rubro: 'Tiendas',
-      titulo: 'El producto, antes de comprarlo',
-      texto:
-        'Cualquier producto con su modelo 3D: decoración, electrodomésticos, juguetes. El cliente ve el tamaño real en su casa.',
-      src: 'models/gorila-lowpoly.glb',
-      alt: 'Figura de gorila en 3D',
-      scale: '0.5 0.5 0.5',
-      orbit: '25deg 75deg auto',
-      boton: 'Ver en mi casa',
-    },
-  ],
 
   proyectos: [
     {
@@ -129,14 +36,6 @@ window.CV = {
         'faltantes, libreta de crédito, buscador de productos y avisos automáticos a Discord. Más de 800 tests.',
       stack: ['Python', 'Telegram Bot API', 'Discord', 'Docker'],
       imagenes: [['img/app/bot-pedidos-menu.webp', 416, 1144]],
-    },
-    {
-      nombre: 'Realidad Aumentada web',
-      etiqueta: 'Demo comercial',
-      texto:
-        'Modelos 3D que se proyectan con la cámara del celular desde el navegador, sin instalar apps. ' +
-        'Está funcionando más arriba en esta misma página.',
-      stack: ['model-viewer', 'three.js', 'WebXR'],
     },
     {
       nombre: 'App de mensajería segura y privada',
@@ -221,7 +120,7 @@ window.CV = {
   ],
 
   trayectoria: [
-    ['Actualidad · +2 años', 'Desarrollador freelance', 'Apps Android, bots de Telegram, tiendas Shopify, Realidad Aumentada y automatizaciones a medida para clientes reales.'],
+    ['Actualidad · +2 años', 'Desarrollador freelance', 'Apps Android, bots de Telegram, tiendas Shopify y automatizaciones a medida para clientes reales.'],
     ['', 'Gestión comercial y digital — Ferretería (San José)', 'Atención al cliente, ventas, asesoramiento técnico y administración de la tienda online.'],
     ['', 'Pasante en elaboración de proyectos — Gobierno de Canarias (España)', 'Proyectos urbanos y rurales durante una pasantía institucional.'],
     ['', 'Vendedor remoto — Empresa española de insumos tecnológicos', 'Venta y asesoramiento a distancia, seguimiento y postventa.'],
@@ -235,7 +134,7 @@ window.CV = {
   ],
   habilidades: [
     'Kotlin · Jetpack Compose', 'Python', 'React Native · Expo', 'Node.js · TypeScript', 'Next.js',
-    'Bots de Telegram', 'Shopify', 'Realidad Aumentada web', 'Git · GitHub', 'Docker',
+    'Bots de Telegram', 'Shopify', 'Git · GitHub', 'Docker',
     'Redes', 'Kali Linux · Nmap · Wireshark', 'Instalación de CCTV', 'SEO',
   ],
 
