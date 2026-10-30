@@ -5,7 +5,7 @@ import { GLTFLoader } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/
 import { RoomEnvironment } from 'https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/environments/RoomEnvironment.js/+esm';
 
 // seguir(): mientras devuelva true se sigue dibujando; al cerrarse la bienvenida se libera todo
-export function iniciarSillon(contenedor, seguir, src = 'models/sillon.glb') {
+export function iniciarSillon(contenedor, seguir, src) {
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
   renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
